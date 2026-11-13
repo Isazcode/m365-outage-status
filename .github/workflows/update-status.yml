@@ -1,0 +1,44 @@
+name: Update M365 status
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"   # every 15 min (GitHub may run a few minutes late)
+  workflow_dispatch: {}       # "Run workflow" button on the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-status
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch Microsoft Service Health and update status.json
+        env:
+          MS_TENANT_ID: ${{ secrets.MS_TENANT_ID }}
+          MS_CLIENT_ID: ${{ secrets.MS_CLIENT_ID }}
+          MS_CLIENT_SECRET: ${{ secrets.MS_CLIENT_SECRET }}
+          ISSUE_IDS: ${{ vars.ISSUE_IDS }}
+          CHECK_INTERVAL_MIN: "15"
+        run: python scripts/update_status.py
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet status.json; then
+            echo "No changes"; exit 0
+          fi
+          git config user.name "status-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add status.json
+          git commit -m "Auto status update $(TZ=America/New_York date '+%-I:%M %p ET')"
+          git push
