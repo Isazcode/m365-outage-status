@@ -78,6 +78,7 @@
       <div class="kpi"><div class="l">Next check</div><div class="v" id="nextCheck">—</div></div>
     </div>
     <div class="note" id="overallNote"></div>
+    <div class="muted" id="fresh" style="margin-top:6px"></div>
   </div>
 
   <div class="card" id="services">
@@ -119,8 +120,10 @@
   const cls = s => "s-" + (["outage","degraded","recovering","restored","resolved","healthy"].includes(s) ? s : "unknown");
   const label = s => ({outage:"Outage",degraded:"Degraded",recovering:"Recovering",restored:"Restored",resolved:"Resolved",healthy:"Healthy"}[s] || "Unknown");
 
+  function ago(iso){ const m=Math.round((new Date()-new Date(iso))/60000); return m<=0?"just now":m===1?"1 min ago":m+" min ago"; }
   function tick(){
     if(!state) return;
+    const f=$("fresh"); if(f){ f.textContent = "Status last checked " + ago(state.lastChecked) + (window.__lastPull ? " · your page refreshed at " + window.__lastPull.toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit",second:"2-digit"}) : ""); }
     const start = state.incidentStart ? new Date(state.incidentStart) : null;
     const end = state.resolvedAt ? new Date(state.resolvedAt) : new Date();
     if(start){
@@ -130,7 +133,7 @@
     if(state.resolved){ $("nextCheck").textContent = "Stopped"; return; }
     if(state.nextCheck){
       const s = Math.round((new Date(state.nextCheck) - new Date())/1000);
-      $("nextCheck").textContent = s > 0 ? Math.floor(s/60) + ":" + String(s%60).padStart(2,"0") : "Due now";
+      $("nextCheck").textContent = s > 0 ? Math.floor(s/60) + ":" + String(s%60).padStart(2,"0") : "any minute";
     }
   }
   setInterval(tick, 1000);
@@ -214,7 +217,7 @@
     try{
       const r = await fetch("status.json?t=" + Date.now(), {cache:"no-store"});
       if(!r.ok) throw new Error(r.status);
-      state = await r.json(); render();
+      state = await r.json(); window.__lastPull = new Date(); render();
       $("liveDot").className = "dot"; $("liveTxt").textContent = "Live · auto-refreshes every 60s";
       $("warn").style.display = "none";
     }catch(e){
