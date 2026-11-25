@@ -59,6 +59,20 @@
           "Live posts: WebICE / ICE Chat issues",
           "https://x.com/search?q=%28WebICE%20OR%20%22ICE%20Chat%22%20OR%20%22ICE%20Connect%22%29%20%28down%20OR%20outage%20OR%20issues%29&f=live"
         ]
+      ],
+      "trackers": [
+        [
+          "StatusGator: ICE",
+          "https://statusgator.com/services/ice"
+        ],
+        [
+          "StatusGator: ICE Futures US",
+          "https://statusgator.com/services/ice/ice-futures-us"
+        ],
+        [
+          "Downdetector search: ICE",
+          "https://downdetector.com/search/?q=intercontinental%20exchange"
+        ]
       ]
     },
     {
@@ -107,6 +121,12 @@
           "Live posts: CME Direct / Globex issues",
           "https://x.com/search?q=%28%22CME%20Direct%22%20OR%20Globex%20OR%20%22CME%20Group%22%29%20%28down%20OR%20outage%20OR%20halted%20OR%20issues%29&f=live"
         ]
+      ],
+      "trackers": [
+        [
+          "Downdetector search: CME Group",
+          "https://downdetector.com/search/?q=cme%20group"
+        ]
       ]
     },
     {
@@ -129,12 +149,30 @@
       ],
       "xLinks": [
         [
+          "@TheTerminal (Bloomberg Terminal, official)",
+          "https://x.com/TheTerminal"
+        ],
+        [
           "Live posts: Bloomberg Terminal down",
           "https://x.com/search?q=%28%22bloomberg%20terminal%22%20OR%20%22bbg%20terminal%22%20OR%20%22bloomberg%20down%22%29%20%28down%20OR%20outage%29&f=live"
         ],
         [
           "@Bloomberg (has posted outage updates before)",
           "https://x.com/search?q=from%3ABloomberg%20%28terminal%20OR%20outage%20OR%20service%29&f=live"
+        ]
+      ],
+      "trackers": [
+        [
+          "StatusGator: Bloomberg Terminal",
+          "https://statusgator.com/services/bloomberg-terminal"
+        ],
+        [
+          "StatusGator: Bloomberg Terminal outage map",
+          "https://statusgator.com/services/bloomberg-terminal/map"
+        ],
+        [
+          "Downdetector search: Bloomberg",
+          "https://downdetector.com/search/?q=bloomberg"
         ]
       ]
     },
@@ -157,6 +195,12 @@
           "Live posts: Cloud9 / C9 Trader issues",
           "https://x.com/search?q=%28%22C9%20Trader%22%20OR%20%22Cloud9%20Trader%22%20OR%20%22Cloud9%20Technologies%22%29%20%28down%20OR%20outage%20OR%20issues%29&f=live"
         ]
+      ],
+      "trackers": [
+        [
+          "Downdetector search: Cloud9 / Symphony",
+          "https://downdetector.com/search/?q=symphony"
+        ]
       ]
     },
     {
@@ -177,6 +221,12 @@
         [
           "Live posts: KRM22",
           "https://x.com/search?q=KRM22&f=live"
+        ]
+      ],
+      "trackers": [
+        [
+          "Downdetector search: KRM22",
+          "https://downdetector.com/search/?q=krm22"
         ]
       ]
     }

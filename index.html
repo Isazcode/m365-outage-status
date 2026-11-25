@@ -117,8 +117,8 @@
     <div class="ovcols">
       <div class="card"><h2>Latest updates</h2><div class="feed" id="ovfeed"><div class="muted">Loading…</div></div>
         <div class="muted" style="margin-top:8px">From the automatic checks: Microsoft service health, the ICE Status Center and our website checks.</div></div>
-      <div class="card links"><h2>On X (opens x.com)</h2><div id="ovx"></div>
-        <div class="muted" style="margin-top:8px">Live X searches and official accounts. X charges for automatic reading, so these open x.com instead; posts there are unverified.</div></div>
+      <div class="card links"><h2>On X · StatusGator · Downdetector</h2><div id="ovx"></div>
+        <div class="muted" style="margin-top:8px">These sites don't allow free automatic reading, so the links open them directly. X posts and user reports are unverified.</div></div>
     </div>
   </section>
 
@@ -381,9 +381,10 @@
   function xPanel(){
     const host = $("ovx"); host.textContent = "";
     P.platforms.forEach(p => {
-      if(!(p.xLinks||[]).length) return;
+      const all = [...(p.xLinks||[]).map(([t,u]) => ["X: " + t, u]), ...(p.trackers||[])];
+      if(!all.length) return;
       host.append(el("div","grp",p.name));
-      p.xLinks.forEach(([t,u]) => { const a = el("a",null,t); a.href=u; a.target="_blank"; a.rel="noopener"; host.append(a); });
+      all.forEach(([t,u]) => { const a = el("a",null,t); a.href=u; a.target="_blank"; a.rel="noopener"; host.append(a); });
     });
   }
 
@@ -443,6 +444,12 @@
     if(!hist.length) hc.append(el("div","muted","No changes recorded yet."));
     else { const rows = el("div","rows"); hist.slice(0,20).forEach(h => { const r = el("div","row"); r.append(el("span","muted",fmt(h.at)), el("span",null,(LBL[h.from]||h.from) + " → " + (LBL[h.to]||h.to))); rows.append(r); }); hc.append(rows); }
     host.append(hc);
+    if((p.trackers||[]).length){
+      const tc = el("div","card links"); tc.append(el("h2",null,"Outage trackers (StatusGator · Downdetector)"));
+      p.trackers.forEach(([t,u]) => { const a = el("a",null,t); a.href=u; a.target="_blank"; a.rel="noopener"; tc.append(a); });
+      tc.append(el("div","muted","Independent sites that combine user reports and checks. They don't allow automatic reading, so these open their pages. A \"search\" link means they had no dedicated page we could confirm."));
+      host.append(tc);
+    }
     if((p.xLinks||[]).length){
       const xc = el("div","card links"); xc.append(el("h2",null,"On X (opens x.com)"));
       p.xLinks.forEach(([t,u]) => { const a = el("a",null,t); a.href=u; a.target="_blank"; a.rel="noopener"; xc.append(a); });

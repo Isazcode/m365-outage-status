@@ -293,6 +293,10 @@ def main():
               "support": "Microsoft 365 admin center → Service health",
               "xLinks": [["@MSFT365Status (official)", "https://x.com/search?q=from%3AMSFT365Status&f=live"],
                          ["Live posts: Outlook / Teams down", "https://x.com/search?q=%28outlook%20OR%20teams%20OR%20%22microsoft%20365%22%29%20down&f=live"]]})
+    m["trackers"] = [["StatusGator: Microsoft 365", "https://statusgator.com/services/microsoft-office-365"],
+                     ["Downdetector: Microsoft 365", "https://downdetector.com/status/office-365/"],
+                     ["Downdetector: Outlook", "https://downdetector.com/status/outlook/"],
+                     ["Downdetector: Teams", "https://downdetector.com/status/teams/"]]
     m.update(m365_extra())
     out_platforms.append(m)
 
@@ -300,7 +304,8 @@ def main():
         res = build_ice(p) if p.get("type") == "ice" else build_checks(p)
         res.update({"id": p["id"], "name": p["name"], "statusPage": p.get("statusPage"),
                     "support": p.get("support"), "about": p.get("about"), "xLinks": p.get("xLinks", []),
-                    "statusLabel": p.get("statusLabel"), "links": p.get("links", [])})
+                    "statusLabel": p.get("statusLabel"), "links": p.get("links", []),
+                    "trackers": p.get("trackers", [])})
         out_platforms.append(res)
 
     t = now()
