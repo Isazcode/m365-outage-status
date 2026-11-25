@@ -169,7 +169,7 @@
   function ago(iso){ const m=Math.round((new Date()-new Date(iso))/60000); return m<=0?"just now":m===1?"1 min ago":m+" min ago"; }
   function tick(){
     if(!state) return;
-    const f=$("fresh"); if(f){ f.textContent = "Status last checked " + ago(state.lastChecked) + (window.__lastPull ? " · your page refreshed at " + window.__lastPull.toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit",second:"2-digit"}) : ""); }
+    const f=$("fresh"); if(f && state.resolved){ f.textContent = "Incident closed " + new Date(state.resolvedAt).toLocaleString("en-US",{timeZone:"America/New_York",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}) + " ET"; } else if(f){ f.textContent = "Status last checked " + ago(state.lastChecked) + (window.__lastPull ? " · your page refreshed at " + window.__lastPull.toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit",second:"2-digit"}) : ""); }
     const start = state.incidentStart ? new Date(state.incidentStart) : null;
     const end = state.resolvedAt ? new Date(state.resolvedAt) : new Date();
     if(start){
