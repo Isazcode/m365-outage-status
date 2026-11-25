@@ -1,6 +1,6 @@
 {
- "lastChecked": "2026-11-25T19:55:39Z",
- "nextCheck": "2026-11-25T20:12:39Z",
+ "lastChecked": "2026-11-25T20:26:31Z",
+ "nextCheck": "2026-11-25T20:43:31Z",
  "overall": "healthy",
  "platforms": [
   {
@@ -12,6 +12,16 @@
    "name": "Microsoft 365",
    "statusPage": "https://status.cloud.microsoft",
    "support": "Microsoft 365 admin center \u2192 Service health",
+   "xLinks": [
+    [
+     "@MSFT365Status (official)",
+     "https://x.com/search?q=from%3AMSFT365Status&f=live"
+    ],
+    [
+     "Live posts: Outlook / Teams down",
+     "https://x.com/search?q=%28outlook%20OR%20teams%20OR%20%22microsoft%20365%22%29%20down&f=live"
+    ]
+   ],
    "autoOverall": "healthy",
    "history": [],
    "since": "2026-11-25T14:51:08Z"
@@ -128,6 +138,12 @@
    "statusPage": "https://www.ice.com/status",
    "support": "ICE Help Desk +1 770 738 2101",
    "about": null,
+   "xLinks": [
+    [
+     "Live posts: WebICE / ICE Chat issues",
+     "https://x.com/search?q=%28WebICE%20OR%20%22ICE%20Chat%22%20OR%20%22ICE%20Connect%22%29%20%28down%20OR%20outage%20OR%20issues%29&f=live"
+    ]
+   ],
    "autoOverall": "healthy",
    "history": [],
    "since": "2026-11-25T14:51:08Z"
@@ -142,14 +158,14 @@
      "url": "https://www.bloomberg.com/professional/",
      "ok": true,
      "code": 403,
-     "ms": 142
+     "ms": 98
     },
     {
      "name": "Bloomberg Anywhere login",
      "url": "https://bba.bloomberg.net/",
      "ok": true,
      "code": 200,
-     "ms": 391
+     "ms": 106
     }
    ],
    "id": "bloomberg",
@@ -157,6 +173,16 @@
    "statusPage": null,
    "support": "Bloomberg Help: press HELP twice on the Terminal, or call +1 212 318 2000",
    "about": "Bloomberg doesn't publish a public status page. This tab shows website checks plus any status you set by hand.",
+   "xLinks": [
+    [
+     "Live posts: Bloomberg Terminal down",
+     "https://x.com/search?q=%28%22bloomberg%20terminal%22%20OR%20%22bbg%20terminal%22%20OR%20%22bloomberg%20down%22%29%20%28down%20OR%20outage%29&f=live"
+    ],
+    [
+     "@Bloomberg (has posted outage updates before)",
+     "https://x.com/search?q=from%3ABloomberg%20%28terminal%20OR%20outage%20OR%20service%29&f=live"
+    ]
+   ],
    "autoOverall": "healthy",
    "history": [],
    "since": "2026-11-25T14:51:08Z"
@@ -171,7 +197,7 @@
      "url": "https://c9tec.com/",
      "ok": true,
      "code": 200,
-     "ms": 223
+     "ms": 152
     }
    ],
    "id": "c9",
@@ -179,6 +205,12 @@
    "statusPage": null,
    "support": "Cloud9 / Symphony support",
    "about": "Cloud9 doesn't publish a public status page. This tab shows website checks plus any status you set by hand.",
+   "xLinks": [
+    [
+     "Live posts: Cloud9 / C9 Trader issues",
+     "https://x.com/search?q=%28%22C9%20Trader%22%20OR%20%22Cloud9%20Trader%22%20OR%20%22Cloud9%20Technologies%22%29%20%28down%20OR%20outage%20OR%20issues%29&f=live"
+    ]
+   ],
    "autoOverall": "healthy",
    "history": [],
    "since": "2026-11-25T14:51:08Z"
@@ -193,7 +225,7 @@
      "url": "https://www.krm22.com/",
      "ok": true,
      "code": 200,
-     "ms": 1653
+     "ms": 1115
     }
    ],
    "id": "krm22",
@@ -201,6 +233,12 @@
    "statusPage": null,
    "support": "KRM22 support",
    "about": "KRM22 doesn't publish a public status page. Add your KRM22 portal URL to platforms.config.json for a direct check.",
+   "xLinks": [
+    [
+     "Live posts: KRM22",
+     "https://x.com/search?q=KRM22&f=live"
+    ]
+   ],
    "autoOverall": "healthy",
    "history": [],
    "since": "2026-11-25T14:51:08Z"
