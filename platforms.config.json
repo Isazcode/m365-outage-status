@@ -52,8 +52,56 @@
       "checks": [],
       "xLinks": [
         [
+          "@ICE_Markets (official)",
+          "https://x.com/search?q=from%3AICE_Markets&f=live"
+        ],
+        [
           "Live posts: WebICE / ICE Chat issues",
           "https://x.com/search?q=%28WebICE%20OR%20%22ICE%20Chat%22%20OR%20%22ICE%20Connect%22%29%20%28down%20OR%20outage%20OR%20issues%29&f=live"
+        ]
+      ]
+    },
+    {
+      "id": "cme",
+      "name": "CME Direct",
+      "type": "checks",
+      "statusPage": "https://www.cmegroup.com/solutions/market-access/globex/trade-on-globex/about-the-global-command-center.html",
+      "statusLabel": "CME Global Command Center (GCC)",
+      "support": "CME Global Command Center (24/6): US +1 800 438 8616",
+      "about": "CME doesn't publish a public status feed. This tab checks the CME Direct, CME Group Login and CME Group websites, plus any status you set by hand. During market halts the GCC sends updates every 15 minutes through its messaging system.",
+      "components": [],
+      "checks": [
+        {
+          "name": "CME Direct server (login & download)",
+          "url": "https://cmedirect.cmegroup.com/"
+        },
+        {
+          "name": "CME Group Login",
+          "url": "https://login.cmegroup.com/"
+        },
+        {
+          "name": "CME Group website",
+          "url": "https://www.cmegroup.com/"
+        }
+      ],
+      "links": [
+        [
+          "CME Group notices (Globex, CME Direct)",
+          "https://www.cmegroup.com/notices.html"
+        ],
+        [
+          "CME Direct help",
+          "https://www.cmegroup.com/tools-information/webhelp/cme-direct/cme-direct-trader-broker/Content/GettingStarted.html"
+        ]
+      ],
+      "xLinks": [
+        [
+          "@CMEGroup (official)",
+          "https://x.com/search?q=from%3ACMEGroup&f=live"
+        ],
+        [
+          "Live posts: CME Direct / Globex issues",
+          "https://x.com/search?q=%28%22CME%20Direct%22%20OR%20Globex%20OR%20%22CME%20Group%22%29%20%28down%20OR%20outage%20OR%20halted%20OR%20issues%29&f=live"
         ]
       ]
     },

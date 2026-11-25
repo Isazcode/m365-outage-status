@@ -209,6 +209,14 @@ def main():
             row["note"] = ("No incidents. " + (f"{len(adv)} minor " + ("advisories" if len(adv) > 1 else "advisory") +
                            f", e.g. {adv[0]['id']}: {(adv[0].get('title') or '')[:110]}" if adv else "Operational."))
     state["advisories"] = len([i for i in all_open if i.get("classification") != "incident" and watched(i.get("service"))])
+    # Latest open Microsoft posts on watched services, for the Overview "Latest updates" feed.
+    posts = [i for i in all_open if watched(i.get("service"))]
+    posts.sort(key=lambda i: i.get("lastModifiedDateTime") or i.get("startDateTime") or "", reverse=True)
+    state["openPosts"] = [{
+        "id": i.get("id"), "kind": "incident" if i.get("classification") == "incident" else "advisory",
+        "service": i.get("service"), "title": (i.get("title") or "")[:160],
+        "at": ((i.get("lastModifiedDateTime") or i.get("startDateTime") or "")[:19] + "Z") if (i.get("lastModifiedDateTime") or i.get("startDateTime")) else None,
+    } for i in posts[:8]]
 
     # ---- open incidents on watched services
     open_issues = [i for i in all_open if i.get("classification") == "incident" and watched(i.get("service"))]

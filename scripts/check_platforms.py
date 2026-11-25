@@ -31,6 +31,8 @@ INTERVAL_MIN = int(os.environ.get("CHECK_INTERVAL_MIN", "15"))
 HEARTBEAT_MIN = 60
 
 RANK = {"healthy": 0, "unknown": 1, "maintenance": 2, "degraded": 3, "outage": 4}
+LABEL = {"healthy": "Operational", "degraded": "Degraded", "outage": "Outage",
+         "maintenance": "Maintenance", "unknown": "Unknown"}
 ICE_SEV = {
     "normal": "healthy",
     "informational message": "healthy",
@@ -193,11 +195,76 @@ def build_m365():
             "source": "Microsoft 365 tab", "lastIncident": None}
 
 
+def m365_extra():
+    try:
+        with open(M365) as f:
+            s = json.load(f)
+    except Exception:
+        return {}
+    return {"advisories": s.get("advisories"), "posts": s.get("openPosts") or [],
+            "services": [{"name": x.get("name"), "status": x.get("status")} for x in s.get("services", [])]}
+
+
+# ---------------------------------------------------------------- overview summary + feed
+def build_summary(platforms, t):
+    tot = len(platforms)
+    ok = sum(1 for p in platforms if p["overall"] == "healthy")
+    issues = [p["name"] for p in platforms if p["overall"] in ("degraded", "outage")]
+    checks = [c for p in platforms for c in (p.get("checks") or [])]
+    ms = [c["ms"] for c in checks if c.get("ok") and c.get("ms")]
+    ice_items = [i for p in platforms if p["id"] == "ice" for c in p.get("components", []) for i in c.get("items", [])]
+    maint = sorted([dict(m, platform=p["name"]) for p in platforms for m in (p.get("maintenance") or [])],
+                   key=lambda m: m["start"])
+    m365 = next((p for p in platforms if p["id"] == "m365"), {})
+    m_svcs = m365.get("services") or []
+    changes = sorted([dict(h, platform=p["name"]) for p in platforms for h in (p.get("history") or [])],
+                     key=lambda h: h["at"], reverse=True)
+
+    feed = []
+    for h in changes[:10]:
+        feed.append({"at": h["at"], "platform": h["platform"], "kind": "change",
+                     "text": f"Status changed: {LABEL.get(h['from'], h['from'])} → {LABEL.get(h['to'], h['to'])}"})
+    for po in (m365.get("posts") or []):
+        feed.append({"at": po.get("at"), "platform": "Microsoft 365", "kind": po.get("kind"),
+                     "text": f"{po.get('id')} · {po.get('service')}: {po.get('title')}"})
+    for m in maint:
+        feed.append({"at": m["start"], "platform": m["platform"], "kind": "maintenance",
+                     "text": ("In progress: " if m.get("active") else "Scheduled: ") + m["subject"],
+                     "end": m.get("end")})
+    for p in platforms:
+        if p.get("manual"):
+            feed.append({"at": p.get("since"), "platform": p["name"], "kind": "manual",
+                         "text": "Set by hand: " + (p["manual"].get("note") or p["manual"]["status"])})
+    if m365.get("lastIncident"):
+        feed.append({"at": m365["lastIncident"], "platform": "Microsoft 365", "kind": "resolved",
+                     "text": "Nov 12–14 global outage (EX1550543 / MO1550821) resolved."})
+    feed = [f for f in feed if f.get("at")]
+    feed.sort(key=lambda f: f["at"], reverse=True)
+
+    upcoming = [m for m in maint if not m.get("active")]
+    return {
+        "platformsTotal": tot, "platformsOk": ok, "issues": issues,
+        "checksTotal": len(checks), "checksOk": sum(1 for c in checks if c.get("ok")),
+        "avgMs": int(sum(ms) / len(ms)) if ms else None,
+        "iceTotal": len(ice_items), "iceOk": sum(1 for i in ice_items if i["status"] == "healthy"),
+        "m365Services": len(m_svcs), "m365Ok": sum(1 for x in m_svcs if x.get("status") == "healthy"),
+        "m365Advisories": m365.get("advisories"),
+        "maintActive": sum(1 for m in maint if m.get("active")),
+        "maintUpcoming": len(upcoming),
+        "nextMaint": ({"platform": upcoming[0]["platform"], "subject": upcoming[0]["subject"],
+                       "start": upcoming[0]["start"], "end": upcoming[0].get("end")} if upcoming else None),
+        "lastChange": changes[0] if changes else None,
+        "lastM365Incident": m365.get("lastIncident"),
+        "feed": feed[:15],
+    }
+
+
 # ---------------------------------------------------------------- main
 def strip_volatile(d):
     d = json.loads(json.dumps(d))
     d.pop("lastChecked", None)
     d.pop("nextCheck", None)
+    d.pop("summary", None)
     for p in d.get("platforms", []):
         for c in p.get("checks", []) or []:
             c.pop("ms", None)
@@ -226,12 +293,14 @@ def main():
               "support": "Microsoft 365 admin center → Service health",
               "xLinks": [["@MSFT365Status (official)", "https://x.com/search?q=from%3AMSFT365Status&f=live"],
                          ["Live posts: Outlook / Teams down", "https://x.com/search?q=%28outlook%20OR%20teams%20OR%20%22microsoft%20365%22%29%20down&f=live"]]})
+    m.update(m365_extra())
     out_platforms.append(m)
 
     for p in cfg["platforms"]:
         res = build_ice(p) if p.get("type") == "ice" else build_checks(p)
         res.update({"id": p["id"], "name": p["name"], "statusPage": p.get("statusPage"),
-                    "support": p.get("support"), "about": p.get("about"), "xLinks": p.get("xLinks", [])})
+                    "support": p.get("support"), "about": p.get("about"), "xLinks": p.get("xLinks", []),
+                    "statusLabel": p.get("statusLabel"), "links": p.get("links", [])})
         out_platforms.append(res)
 
     t = now()
@@ -256,6 +325,7 @@ def main():
         "overall": worst([p["overall"] for p in out_platforms], "healthy"),
         "platforms": out_platforms,
     }
+    out["summary"] = build_summary(out_platforms, t)
 
     changed = strip_volatile(out) != strip_volatile(prev)
     stale = True

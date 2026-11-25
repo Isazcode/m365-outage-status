@@ -84,6 +84,21 @@
   .sub .row{padding:4px 0;font-size:13px;border:0}
   .tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 7px;border-radius:6px;background:var(--greybg);color:var(--muted)}
   a{color:var(--c1)}
+  .stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+  .stat .l{font-size:12px;color:var(--muted)}
+  .stat .v{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;margin-top:2px}
+  .stat .d{font-size:12px;color:var(--muted);margin-top:2px}
+  .stat.warn-s .v{color:var(--amber)} .stat.bad-s .v{color:var(--red)} .stat.good-s .v{color:var(--green)}
+  .ovcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:14px}
+  .ovcols .card{margin:0}
+  .feed .fi{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+  .feed .fi:first-child{border-top:0}
+  .feed .fi .t{font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .feed .fi .p{font-weight:700}
+  .k-incident,.k-change{background:var(--amberbg);color:var(--amber)} .k-maintenance{background:var(--greybg);color:var(--c1)} .k-resolved{background:var(--greenbg);color:var(--green)}
+  .links .grp{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-top:10px}
+  .links .grp:first-child{margin-top:0}
 </style>
 </head>
 <body>
@@ -92,12 +107,19 @@
     <div><h1>SCE Platform Status</h1><div class="muted" id="pfresh">Loading…</div></div>
     <span class="live"><span class="dot off" id="liveDot"></span><span id="liveTxt">Connecting…</span></span>
   </header>
-  <nav class="tabs"><a href="#overview" data-id="overview"><span class="sdot"></span>Overview</a><a href="#m365" data-id="m365"><span class="sdot"></span>Microsoft 365</a><a href="#ice" data-id="ice"><span class="sdot"></span>ICE</a><a href="#bloomberg" data-id="bloomberg"><span class="sdot"></span>Bloomberg</a><a href="#c9" data-id="c9"><span class="sdot"></span>Cloud9 Trader</a><a href="#krm22" data-id="krm22"><span class="sdot"></span>KRM22</a></nav>
+  <nav class="tabs"><a href="#overview" data-id="overview"><span class="sdot"></span>Overview</a><a href="#m365" data-id="m365"><span class="sdot"></span>Microsoft 365</a><a href="#ice" data-id="ice"><span class="sdot"></span>ICE</a><a href="#cme" data-id="cme"><span class="sdot"></span>CME Direct</a><a href="#bloomberg" data-id="bloomberg"><span class="sdot"></span>Bloomberg</a><a href="#c9" data-id="c9"><span class="sdot"></span>Cloud9 Trader</a><a href="#krm22" data-id="krm22"><span class="sdot"></span>KRM22</a></nav>
   <div id="warn" class="warn"></div>
 
   <section class="tab" id="tab-overview">
     <div id="ovbanner" class="banner unknown">Loading…</div>
+    <div class="stats" id="ovstats"></div>
     <div class="ovgrid" id="ovgrid"></div>
+    <div class="ovcols">
+      <div class="card"><h2>Latest updates</h2><div class="feed" id="ovfeed"><div class="muted">Loading…</div></div>
+        <div class="muted" style="margin-top:8px">From the automatic checks: Microsoft service health, the ICE Status Center and our website checks.</div></div>
+      <div class="card links"><h2>On X (opens x.com)</h2><div id="ovx"></div>
+        <div class="muted" style="margin-top:8px">Live X searches and official accounts. X charges for automatic reading, so these open x.com instead; posts there are unverified.</div></div>
+    </div>
   </section>
 
   <section class="tab" id="tab-m365">
@@ -149,11 +171,12 @@
   </section>
 
   <section class="tab" id="tab-ice"></section>
+  <section class="tab" id="tab-cme"></section>
   <section class="tab" id="tab-bloomberg"></section>
   <section class="tab" id="tab-c9"></section>
   <section class="tab" id="tab-krm22"></section>
 
-  <div class="muted" style="text-align:center;padding:4px 0 20px">Checked automatically every 15 minutes. ICE from the official ICE Status Center; Bloomberg, Cloud9 and KRM22 have no public status feed, so their tabs show website checks plus any status set by hand.</div>
+  <div class="muted" style="text-align:center;padding:4px 0 20px">Checked automatically every 15 minutes. ICE from the official ICE Status Center; CME Direct, Bloomberg, Cloud9 and KRM22 have no public status feed, so their tabs show website checks plus any status set by hand.</div>
 </div>
 <script>
 (function(){
@@ -280,8 +303,8 @@
 <script>
 (function(){
   const $ = id => document.getElementById(id);
-  const ORDER = ["overview","m365","ice","bloomberg","c9","krm22"];
-  const NAMES = {overview:"Overview", m365:"Microsoft 365", ice:"ICE", bloomberg:"Bloomberg", c9:"Cloud9 Trader", krm22:"KRM22"};
+  const ORDER = ["overview","m365","ice","cme","bloomberg","c9","krm22"];
+  const NAMES = {overview:"Overview", m365:"Microsoft 365", ice:"ICE", cme:"CME Direct", bloomberg:"Bloomberg", c9:"Cloud9 Trader", krm22:"KRM22"};
   const LBL = {healthy:"Operational", degraded:"Degraded", outage:"Outage", maintenance:"Maintenance", unknown:"Unknown", recovering:"Recovering", resolved:"Resolved", restored:"Restored"};
   const pillCls = s => "pill s-" + (["healthy","degraded","outage","maintenance","recovering","resolved","restored"].includes(s) ? s : "unknown");
   const el = (tag, cls, txt) => { const e = document.createElement(tag); if(cls) e.className = cls; if(txt != null) e.textContent = txt; return e; };
@@ -318,6 +341,47 @@
       c.append(el("div","nt",p.note || ""));
       const src = el("div","src", (p.manual ? "Set manually · " : "") + (p.source || "") + " · since " + fmt(p.since));
       c.append(src); host.append(c);
+    });
+    stats(); feed(); xPanel();
+  }
+
+  function rel(iso){
+    const m = Math.round((new Date() - new Date(iso)) / 60000);
+    if(m < 0){ const f = -m; return f < 60 ? "in " + f + " min" : f < 2880 ? "in " + Math.round(f/60) + " h" : "in " + Math.round(f/1440) + " days"; }
+    return m < 1 ? "just now" : m < 60 ? m + " min ago" : m < 2880 ? Math.round(m/60) + " h ago" : Math.round(m/1440) + " days ago";
+  }
+  function stats(){
+    const S = P.summary || {}, host = $("ovstats"); host.textContent = "";
+    const add = (l, v, d, tone) => { const c = el("div","stat" + (tone ? " " + tone + "-s" : "")); c.append(el("div","l",l), el("div","v",v)); if(d) c.append(el("div","d",d)); host.append(c); };
+    const n = S.platformsTotal || P.platforms.length, ok = S.platformsOk != null ? S.platformsOk : P.platforms.filter(p=>p.overall==="healthy").length;
+    add("Platforms operational", ok + " / " + n, (S.issues||[]).length ? "Issues: " + S.issues.join(", ") : "No active issues", ok === n ? "good" : (S.issues||[]).length ? "bad" : "warn");
+    if(S.m365Services) add("Microsoft 365 services", S.m365Ok + " / " + S.m365Services, (S.m365Advisories||0) + " minor advisor" + (S.m365Advisories === 1 ? "y" : "ies") + " open", S.m365Ok === S.m365Services ? "good" : "warn");
+    if(S.iceTotal) add("ICE systems normal", S.iceOk + " / " + S.iceTotal, "Per the ICE Status Center", S.iceOk === S.iceTotal ? "good" : "warn");
+    if(S.checksTotal) add("Websites responding", S.checksOk + " / " + S.checksTotal, S.avgMs ? "Avg response " + S.avgMs + " ms" : "", S.checksOk === S.checksTotal ? "good" : "warn");
+    add("Maintenance", S.maintActive ? S.maintActive + " now" : (S.maintUpcoming || 0) + " upcoming",
+        S.nextMaint ? "Next: " + S.nextMaint.platform + ", " + fmt(S.nextMaint.start) : "None in the next 7 days", S.maintActive ? "warn" : null);
+    add("Last status change", S.lastChange ? rel(S.lastChange.at) : "None yet", S.lastChange ? S.lastChange.platform + ": " + (LBL[S.lastChange.from]||S.lastChange.from) + " → " + (LBL[S.lastChange.to]||S.lastChange.to) : "Since tracking began");
+    if(S.lastM365Incident) add("Since last M365 outage", Math.floor((new Date() - new Date(S.lastM365Incident)) / 86400000) + " days", "Nov 12–14 (EX1550543)");
+    add("Next check", P.nextCheck ? rel(P.nextCheck).replace("ago","overdue") : "—", "Checked " + rel(P.lastChecked));
+  }
+  function feed(){
+    const host = $("ovfeed"); host.textContent = "";
+    const F = (P.summary && P.summary.feed) || [];
+    if(!F.length){ host.append(el("div","muted","Nothing new. All quiet.")); return; }
+    const KL = {change:"Change", incident:"Incident", advisory:"Advisory", maintenance:"Maintenance", resolved:"Resolved", manual:"Manual"};
+    F.slice(0,10).forEach(f => {
+      const r = el("div","fi"); r.append(el("div","t",rel(f.at)));
+      const b = el("div"); const hd = el("div"); hd.append(el("span","p",f.platform + " "), el("span","tag k-" + f.kind, KL[f.kind] || f.kind)); b.append(hd);
+      b.append(el("div",null,f.text)); b.append(el("div","muted",fmt(f.at) + (f.end ? " – " + fmt(f.end) : "")));
+      r.append(b); host.append(r);
+    });
+  }
+  function xPanel(){
+    const host = $("ovx"); host.textContent = "";
+    P.platforms.forEach(p => {
+      if(!(p.xLinks||[]).length) return;
+      host.append(el("div","grp",p.name));
+      p.xLinks.forEach(([t,u]) => { const a = el("a",null,t); a.href=u; a.target="_blank"; a.rel="noopener"; host.append(a); });
     });
   }
 
@@ -384,7 +448,8 @@
       host.append(xc);
     }
     const lc = el("div","card links"); lc.append(el("h2",null,"Official sources & support"));
-    if(p.statusPage){ const a = el("a",null,"Official status page"); a.href=p.statusPage; a.target="_blank"; a.rel="noopener"; lc.append(a); }
+    (p.links||[]).forEach(([t,u]) => { const a = el("a",null,t); a.href=u; a.target="_blank"; a.rel="noopener"; lc.append(a); });
+    if(p.statusPage){ const a = el("a",null,p.statusLabel || "Official status page"); a.href=p.statusPage; a.target="_blank"; a.rel="noopener"; lc.append(a); }
     if(p.support) lc.append(el("div","muted",p.support));
     host.append(lc);
   }
