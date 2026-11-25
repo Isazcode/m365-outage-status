@@ -206,7 +206,7 @@ def main():
             row["note"] = "Incident " + ", ".join(i["id"] for i in inc[:3]) + ": " + (inc[0].get("title") or "")[:140]
         else:
             row["status"] = "healthy"
-            row["note"] = ("No incidents. " + (f"{len(adv)} minor advisory" + ("ies" if len(adv) > 1 else "") +
+            row["note"] = ("No incidents. " + (f"{len(adv)} minor " + ("advisories" if len(adv) > 1 else "advisory") +
                            f", e.g. {adv[0]['id']}: {(adv[0].get('title') or '')[:110]}" if adv else "Operational."))
     state["advisories"] = len([i for i in all_open if i.get("classification") != "incident" and watched(i.get("service"))])
 
