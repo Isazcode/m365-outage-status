@@ -30,9 +30,8 @@ jobs:
 
       - name: Microsoft 365 (runs once the Entra app is set up)
         if: ${{ env.MS_CLIENT_ID != '' }}
-        continue-on-error: true
         env:
-          MS_TENANT_ID: ${{ vars.MS_TENANT_ID || secrets.MS_TENANT_ID }}
+          MS_TENANT_ID: ${{ vars.MS_TENANT_ID || '84a28f5a-e6d4-4f5a-9b8d-92dc1aa698df' }}   # Snapper Creek Energy tenant (not secret)
           MS_CLIENT_SECRET: ${{ secrets.MS_CLIENT_SECRET }}
           CHECK_INTERVAL_MIN: "15"
           FORCE_WRITE: ${{ github.event_name != 'schedule' && '1' || '' }}
@@ -57,4 +56,4 @@ jobs:
           git pull --rebase origin main || true
           git push
     env:
-      MS_CLIENT_ID: ${{ vars.MS_CLIENT_ID || secrets.MS_CLIENT_ID }}
+      MS_CLIENT_ID: ${{ vars.MS_CLIENT_ID || 'b0702174-db7d-4817-b661-78dbfbd41f78' }}   # m365-status-bot app (not secret; sign-in uses the federated credential)
