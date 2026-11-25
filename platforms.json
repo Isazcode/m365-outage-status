@@ -1,0 +1,209 @@
+{
+ "lastChecked": "2026-11-25T14:51:08Z",
+ "nextCheck": "2026-11-25T15:08:08Z",
+ "overall": "healthy",
+ "platforms": [
+  {
+   "overall": "healthy",
+   "note": "No active incident being tracked. Last: Nov 12\u201314 global outage (EX1550543 / MO1550821), resolved.",
+   "source": "Microsoft 365 tab",
+   "lastIncident": "2026-11-14T04:15:00Z",
+   "id": "m365",
+   "name": "Microsoft 365",
+   "statusPage": "https://status.cloud.microsoft",
+   "support": "Microsoft 365 admin center \u2192 Service health",
+   "autoOverall": "healthy",
+   "history": [],
+   "since": "2026-11-25T14:51:08Z"
+  },
+  {
+   "overall": "healthy",
+   "note": "All tracked ICE systems normal per the ICE Status Center.",
+   "source": "ICE Status Center (automatic)",
+   "components": [
+    {
+     "name": "WebICE (energy futures & OTC)",
+     "note": "WebICE is the trading screen for these ICE markets; ICE doesn't list WebICE on its own.",
+     "status": "healthy",
+     "items": [
+      {
+       "name": "ICE Futures US",
+       "label": "Normal",
+       "status": "healthy"
+      },
+      {
+       "name": "ICE Futures Europe",
+       "label": "Normal",
+       "status": "healthy"
+      },
+      {
+       "name": "ICE Endex",
+       "label": "Normal",
+       "status": "healthy"
+      },
+      {
+       "name": "ICE OTC",
+       "label": "Normal",
+       "status": "healthy"
+      },
+      {
+       "name": "ICE NGX",
+       "label": "Normal",
+       "status": "healthy"
+      }
+     ]
+    },
+    {
+     "name": "ICE Chat",
+     "note": "",
+     "status": "healthy",
+     "items": [
+      {
+       "name": "ICE Chat",
+       "label": "Normal",
+       "status": "healthy"
+      }
+     ]
+    },
+    {
+     "name": "ICE Connect",
+     "note": "ICE doesn't list ICE Connect by name; tracked through its Data & Analytics desktop and ICE Launcher entries.",
+     "status": "healthy",
+     "items": [
+      {
+       "name": "Data and Analytics",
+       "label": "Normal",
+       "status": "healthy"
+      },
+      {
+       "name": "ICE Launcher",
+       "label": "Normal",
+       "status": "healthy"
+      }
+     ]
+    },
+    {
+     "name": "Clearing (ICE Clear US / Europe)",
+     "note": "",
+     "status": "healthy",
+     "items": [
+      {
+       "name": "ICE Clear US",
+       "label": "Normal",
+       "status": "healthy"
+      },
+      {
+       "name": "ICE Clear Europe",
+       "label": "Normal",
+       "status": "healthy"
+      },
+      {
+       "name": "ICE NGX",
+       "label": "Normal",
+       "status": "healthy"
+      }
+     ]
+    },
+    {
+     "name": "Confirmations (ICE Link / eConfirm)",
+     "note": "",
+     "status": "healthy",
+     "items": [
+      {
+       "name": "ICE Link",
+       "label": "Normal",
+       "status": "healthy"
+      },
+      {
+       "name": "eConfirm",
+       "label": "Normal",
+       "status": "healthy"
+      }
+     ]
+    }
+   ],
+   "maintenance": [],
+   "id": "ice",
+   "name": "ICE",
+   "statusPage": "https://www.ice.com/status",
+   "support": "ICE Help Desk +1 770 738 2101",
+   "about": null,
+   "autoOverall": "healthy",
+   "history": [],
+   "since": "2026-11-25T14:51:08Z"
+  },
+  {
+   "overall": "healthy",
+   "note": "Websites responding. No official status feed, so app-level problems may not show here.",
+   "source": "Website checks (automatic)",
+   "checks": [
+    {
+     "name": "Bloomberg Professional website",
+     "url": "https://www.bloomberg.com/professional/",
+     "ok": true,
+     "code": 403,
+     "ms": 98
+    },
+    {
+     "name": "Bloomberg Anywhere login",
+     "url": "https://bba.bloomberg.net/",
+     "ok": true,
+     "code": 200,
+     "ms": 468
+    }
+   ],
+   "id": "bloomberg",
+   "name": "Bloomberg Terminal",
+   "statusPage": null,
+   "support": "Bloomberg Help: press HELP twice on the Terminal, or call +1 212 318 2000",
+   "about": "Bloomberg doesn't publish a public status page. This tab shows website checks plus any status you set by hand.",
+   "autoOverall": "healthy",
+   "history": [],
+   "since": "2026-11-25T14:51:08Z"
+  },
+  {
+   "overall": "healthy",
+   "note": "Websites responding. No official status feed, so app-level problems may not show here.",
+   "source": "Website checks (automatic)",
+   "checks": [
+    {
+     "name": "Cloud9 Technologies website",
+     "url": "https://c9tec.com/",
+     "ok": true,
+     "code": 200,
+     "ms": 189
+    }
+   ],
+   "id": "c9",
+   "name": "Cloud9 Trader (C9)",
+   "statusPage": null,
+   "support": "Cloud9 / Symphony support",
+   "about": "Cloud9 doesn't publish a public status page. This tab shows website checks plus any status you set by hand.",
+   "autoOverall": "healthy",
+   "history": [],
+   "since": "2026-11-25T14:51:08Z"
+  },
+  {
+   "overall": "healthy",
+   "note": "Websites responding. No official status feed, so app-level problems may not show here.",
+   "source": "Website checks (automatic)",
+   "checks": [
+    {
+     "name": "KRM22 website",
+     "url": "https://www.krm22.com/",
+     "ok": true,
+     "code": 202,
+     "ms": 626
+    }
+   ],
+   "id": "krm22",
+   "name": "KRM22",
+   "statusPage": null,
+   "support": "KRM22 support",
+   "about": "KRM22 doesn't publish a public status page. Add your KRM22 portal URL to platforms.config.json for a direct check.",
+   "autoOverall": "healthy",
+   "history": [],
+   "since": "2026-11-25T14:51:08Z"
+  }
+ ]
+}
