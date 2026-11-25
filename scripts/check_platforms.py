@@ -216,7 +216,7 @@ def build_summary(platforms, t):
     maint = sorted([dict(m, platform=p["name"]) for p in platforms for m in (p.get("maintenance") or [])],
                    key=lambda m: m["start"])
     m365 = next((p for p in platforms if p["id"] == "m365"), {})
-    m_svcs = m365.get("services") or []
+    m_svcs = [x for x in (m365.get("services") or []) if x.get("status") != "unknown"]
     changes = sorted([dict(h, platform=p["name"]) for p in platforms for h in (p.get("history") or [])],
                      key=lambda h: h["at"], reverse=True)
 
