@@ -340,7 +340,9 @@
       const hd = el("div","hd"); hd.append(el("span",null,p.name), pill(p.overall)); c.append(hd);
       c.append(el("div","nt",p.note || ""));
       const src = el("div","src", (p.manual ? "Set manually · " : "") + (p.source || "") + " · since " + fmt(p.since));
-      c.append(src); host.append(c);
+      c.append(src);
+      if(p.id === "cme" && p.statusPage){ const a = el("a",null,"Check CME GCC System Alerts →"); a.href=p.statusPage; a.target="_blank"; a.rel="noopener"; a.style.cssText="display:inline-block;margin-top:6px;font-size:13px"; a.onclick = e => e.stopPropagation(); c.append(a); }
+      host.append(c);
     });
     stats(); feed(); xPanel();
   }
@@ -448,8 +450,8 @@
       host.append(xc);
     }
     const lc = el("div","card links"); lc.append(el("h2",null,"Official sources & support"));
+    if(p.statusPage){ const a = el("a",null,p.statusLabel || "Official status page"); a.href=p.statusPage; a.target="_blank"; a.rel="noopener"; a.style.fontWeight="700"; lc.append(a); }
     (p.links||[]).forEach(([t,u]) => { const a = el("a",null,t); a.href=u; a.target="_blank"; a.rel="noopener"; lc.append(a); });
-    if(p.statusPage){ const a = el("a",null,p.statusLabel || "Official status page"); a.href=p.statusPage; a.target="_blank"; a.rel="noopener"; lc.append(a); }
     if(p.support) lc.append(el("div","muted",p.support));
     host.append(lc);
   }

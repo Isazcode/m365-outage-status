@@ -65,10 +65,10 @@
       "id": "cme",
       "name": "CME Direct",
       "type": "checks",
-      "statusPage": "https://www.cmegroup.com/solutions/market-access/globex/trade-on-globex/about-the-global-command-center.html",
-      "statusLabel": "CME Global Command Center (GCC)",
+      "statusPage": "https://www.cmegroup.com/tools-information/cme-global-command-center-system-alerts.html",
+      "statusLabel": "CME GCC System Alerts (official status page)",
       "support": "CME Global Command Center (24/6): US +1 800 438 8616",
-      "about": "CME doesn't publish a public status feed. This tab checks the CME Direct, CME Group Login and CME Group websites, plus any status you set by hand. During market halts the GCC sends updates every 15 minutes through its messaging system.",
+      "about": "CME posts outages and market halts on its GCC System Alerts page (linked below). CME blocks automated reading of that page, so this tab checks the CME Direct, CME Group Login and CME Group websites, plus any status you set by hand.",
       "components": [],
       "checks": [
         {
@@ -85,6 +85,10 @@
         }
       ],
       "links": [
+        [
+          "CME Global Command Center (contacts)",
+          "https://www.cmegroup.com/solutions/market-access/globex/trade-on-globex/about-the-global-command-center.html"
+        ],
         [
           "CME Group notices (Globex, CME Direct)",
           "https://www.cmegroup.com/notices.html"
