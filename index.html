@@ -141,7 +141,7 @@
     <h2>Official sources</h2>
     <a href="https://admin.microsoft.com/Adminportal/Home#/servicehealth" target="_blank" rel="noopener">Microsoft 365 admin center → Service health</a>
     <a href="https://status.cloud.microsoft" target="_blank" rel="noopener">status.cloud.microsoft</a>
-    <a href="https://x.com/MSFT365Status" target="_blank" rel="noopener">@MSFT365Status on X</a>
+    <a href="https://x.com/search?q=from%3AMSFT365Status&f=live" target="_blank" rel="noopener">@MSFT365Status on X (latest posts)</a>
     <a href="https://azure.status.microsoft/en-us/status" target="_blank" rel="noopener">Azure status</a>
     <a href="https://downdetector.com/status/outlook/" target="_blank" rel="noopener">Downdetector — Outlook</a>
   </div>
@@ -377,6 +377,12 @@
     if(!hist.length) hc.append(el("div","muted","No changes recorded yet."));
     else { const rows = el("div","rows"); hist.slice(0,20).forEach(h => { const r = el("div","row"); r.append(el("span","muted",fmt(h.at)), el("span",null,(LBL[h.from]||h.from) + " → " + (LBL[h.to]||h.to))); rows.append(r); }); hc.append(rows); }
     host.append(hc);
+    if((p.xLinks||[]).length){
+      const xc = el("div","card links"); xc.append(el("h2",null,"On X (opens x.com)"));
+      p.xLinks.forEach(([t,u]) => { const a = el("a",null,t); a.href=u; a.target="_blank"; a.rel="noopener"; xc.append(a); });
+      xc.append(el("div","muted","What people and vendors are posting right now. Not checked automatically; unverified posts."));
+      host.append(xc);
+    }
     const lc = el("div","card links"); lc.append(el("h2",null,"Official sources & support"));
     if(p.statusPage){ const a = el("a",null,"Official status page"); a.href=p.statusPage; a.target="_blank"; a.rel="noopener"; lc.append(a); }
     if(p.support) lc.append(el("div","muted",p.support));

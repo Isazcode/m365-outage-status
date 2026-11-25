@@ -223,13 +223,15 @@ def main():
 
     m = build_m365()
     m.update({"id": "m365", "name": "Microsoft 365", "statusPage": "https://status.cloud.microsoft",
-              "support": "Microsoft 365 admin center → Service health"})
+              "support": "Microsoft 365 admin center → Service health",
+              "xLinks": [["@MSFT365Status (official)", "https://x.com/search?q=from%3AMSFT365Status&f=live"],
+                         ["Live posts: Outlook / Teams down", "https://x.com/search?q=%28outlook%20OR%20teams%20OR%20%22microsoft%20365%22%29%20down&f=live"]]})
     out_platforms.append(m)
 
     for p in cfg["platforms"]:
         res = build_ice(p) if p.get("type") == "ice" else build_checks(p)
         res.update({"id": p["id"], "name": p["name"], "statusPage": p.get("statusPage"),
-                    "support": p.get("support"), "about": p.get("about")})
+                    "support": p.get("support"), "about": p.get("about"), "xLinks": p.get("xLinks", [])})
         out_platforms.append(res)
 
     t = now()

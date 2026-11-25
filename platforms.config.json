@@ -11,27 +11,51 @@
         {
           "name": "WebICE (energy futures & OTC)",
           "note": "WebICE is the trading screen for these ICE markets; ICE doesn't list WebICE on its own.",
-          "iceIds": ["ice-futures-us", "ice-futures-europe", "ice-endex", "ice-otc", "ice-ngx-1"]
+          "iceIds": [
+            "ice-futures-us",
+            "ice-futures-europe",
+            "ice-endex",
+            "ice-otc",
+            "ice-ngx-1"
+          ]
         },
         {
           "name": "ICE Chat",
-          "iceIds": ["ice-chat"]
+          "iceIds": [
+            "ice-chat"
+          ]
         },
         {
           "name": "ICE Connect",
           "note": "ICE doesn't list ICE Connect by name; tracked through its Data & Analytics desktop and ICE Launcher entries.",
-          "iceIds": ["data-and-analytics", "ice-launcher"]
+          "iceIds": [
+            "data-and-analytics",
+            "ice-launcher"
+          ]
         },
         {
           "name": "Clearing (ICE Clear US / Europe)",
-          "iceIds": ["ice-clear-us", "ice-clear-europe", "ice-ngx"]
+          "iceIds": [
+            "ice-clear-us",
+            "ice-clear-europe",
+            "ice-ngx"
+          ]
         },
         {
           "name": "Confirmations (ICE Link / eConfirm)",
-          "iceIds": ["ice-link", "e-confirm"]
+          "iceIds": [
+            "ice-link",
+            "e-confirm"
+          ]
         }
       ],
-      "checks": []
+      "checks": [],
+      "xLinks": [
+        [
+          "Live posts: WebICE / ICE Chat issues",
+          "https://x.com/search?q=%28WebICE%20OR%20%22ICE%20Chat%22%20OR%20%22ICE%20Connect%22%29%20%28down%20OR%20outage%20OR%20issues%29&f=live"
+        ]
+      ]
     },
     {
       "id": "bloomberg",
@@ -42,8 +66,24 @@
       "about": "Bloomberg doesn't publish a public status page. This tab shows website checks plus any status you set by hand.",
       "components": [],
       "checks": [
-        {"name": "Bloomberg Professional website", "url": "https://www.bloomberg.com/professional/"},
-        {"name": "Bloomberg Anywhere login", "url": "https://bba.bloomberg.net/"}
+        {
+          "name": "Bloomberg Professional website",
+          "url": "https://www.bloomberg.com/professional/"
+        },
+        {
+          "name": "Bloomberg Anywhere login",
+          "url": "https://bba.bloomberg.net/"
+        }
+      ],
+      "xLinks": [
+        [
+          "Live posts: Bloomberg Terminal down",
+          "https://x.com/search?q=%28%22bloomberg%20terminal%22%20OR%20%22bbg%20terminal%22%20OR%20%22bloomberg%20down%22%29%20%28down%20OR%20outage%29&f=live"
+        ],
+        [
+          "@Bloomberg (has posted outage updates before)",
+          "https://x.com/search?q=from%3ABloomberg%20%28terminal%20OR%20outage%20OR%20service%29&f=live"
+        ]
       ]
     },
     {
@@ -55,7 +95,16 @@
       "about": "Cloud9 doesn't publish a public status page. This tab shows website checks plus any status you set by hand.",
       "components": [],
       "checks": [
-        {"name": "Cloud9 Technologies website", "url": "https://c9tec.com/"}
+        {
+          "name": "Cloud9 Technologies website",
+          "url": "https://c9tec.com/"
+        }
+      ],
+      "xLinks": [
+        [
+          "Live posts: Cloud9 / C9 Trader issues",
+          "https://x.com/search?q=%28%22C9%20Trader%22%20OR%20%22Cloud9%20Trader%22%20OR%20%22Cloud9%20Technologies%22%29%20%28down%20OR%20outage%20OR%20issues%29&f=live"
+        ]
       ]
     },
     {
@@ -67,7 +116,16 @@
       "about": "KRM22 doesn't publish a public status page. Add your KRM22 portal URL to platforms.config.json for a direct check.",
       "components": [],
       "checks": [
-        {"name": "KRM22 website", "url": "https://www.krm22.com/"}
+        {
+          "name": "KRM22 website",
+          "url": "https://www.krm22.com/"
+        }
+      ],
+      "xLinks": [
+        [
+          "Live posts: KRM22",
+          "https://x.com/search?q=KRM22&f=live"
+        ]
       ]
     }
   ]
