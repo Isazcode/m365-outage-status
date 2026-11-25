@@ -2,7 +2,7 @@ name: Update platform status
 
 on:
   schedule:
-    - cron: "*/15 * * * *"   # every 15 min (GitHub may run a few minutes late)
+    - cron: "7,22,37,52 * * * *"   # every 15 min, off the hour (GitHub may run a few minutes late)
   workflow_dispatch: {}       # "Run workflow" button on the Actions tab
   push:
     paths:                    # re-check right away when you edit settings or a manual status

@@ -180,29 +180,38 @@ def main():
     before = json.dumps({k: v for k, v in state.items() if k not in ("lastChecked", "nextCheck")}, sort_keys=True)
     token = get_token()
 
-    # ---- service tiles: always current
+    # ---- service tiles: always current.
+    # Only *incidents* turn a tile amber/red; minor advisories are listed as a note.
+    flt = urllib.parse.quote("isResolved eq false")
+    all_open = graph(token, f"{GRAPH}/issues?$filter={flt}").get("value", [])
     try:
         overviews = graph(token, f"{GRAPH}/healthOverviews").get("value", [])
-        rows = {r["name"]: r for r in state.get("services", [])}
-        for name, keys in SERVICE_MAP.items():
-            hits = [map_status(o.get("status")) for o in overviews
-                    if any(k in (o.get("service") or "").lower() for k in keys)]
-            hits = [h for h in hits if h[1] >= 0]
-            if not hits:
-                continue
-            st = max(hits, key=lambda x: x[1])[0]
-            row = rows.get(name)
-            if not row:
-                row = {"name": name}
-                state.setdefault("services", []).append(row)
-            row["status"], row["note"] = st, PLAIN.get(st, "")
     except Exception as e:
+        overviews = []
         print(f"healthOverviews failed: {e}", file=sys.stderr)
+    rows = {r["name"]: r for r in state.get("services", [])}
+    for name, keys in SERVICE_MAP.items():
+        match = lambda svc: any(k in (svc or "").lower() for k in keys)
+        if not any(match(o.get("service")) for o in overviews):
+            continue
+        inc = [i for i in all_open if match(i.get("service")) and i.get("classification") == "incident"]
+        adv = [i for i in all_open if match(i.get("service")) and i.get("classification") != "incident"]
+        row = rows.get(name)
+        if not row:
+            row = {"name": name}
+            state.setdefault("services", []).append(row)
+        if inc:
+            st = max((map_status(i.get("status")) for i in inc), key=lambda x: x[1])[0]
+            row["status"] = st if st != "unknown" else "degraded"
+            row["note"] = "Incident " + ", ".join(i["id"] for i in inc[:3]) + ": " + (inc[0].get("title") or "")[:140]
+        else:
+            row["status"] = "healthy"
+            row["note"] = ("No incidents. " + (f"{len(adv)} minor advisory" + ("ies" if len(adv) > 1 else "") +
+                           f", e.g. {adv[0]['id']}: {(adv[0].get('title') or '')[:110]}" if adv else "Operational."))
+    state["advisories"] = len([i for i in all_open if i.get("classification") != "incident" and watched(i.get("service"))])
 
     # ---- open incidents on watched services
-    flt = urllib.parse.quote("isResolved eq false")
-    open_issues = [i for i in graph(token, f"{GRAPH}/issues?$filter={flt}").get("value", [])
-                   if i.get("classification") == "incident" and watched(i.get("service"))]
+    open_issues = [i for i in all_open if i.get("classification") == "incident" and watched(i.get("service"))]
     open_ids = sorted(i["id"] for i in open_issues)
     tracked = state.get("incidentIds") or []
 

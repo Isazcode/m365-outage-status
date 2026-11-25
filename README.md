@@ -9,7 +9,7 @@ This is an unofficial tracker compiled from Microsoft's public status posts and 
 
 ## Auto-updates (GitHub Actions)
 
-`.github/workflows/update-status.yml` runs every 15 minutes and calls `scripts/update_status.py`,
+`.github/workflows/status-check.yml` runs every 15 minutes and calls `scripts/update_status.py`,
 which reads Microsoft 365 Service Health from Microsoft Graph and updates `status.json`.
 
 Setup (one time, no secret stored anywhere):
