@@ -1,0 +1,8 @@
+{
+  "_help": "Set a platform's status by hand (e.g. the desk reports Bloomberg is slow). status: healthy | degraded | outage | maintenance. 'until' (optional, UTC ISO time) makes it expire. Delete the entry (or set status to null) to clear it.",
+  "bloomberg": {"status": null, "note": "", "until": null},
+  "c9": {"status": null, "note": "", "until": null},
+  "krm22": {"status": null, "note": "", "until": null},
+  "ice": {"status": null, "note": "", "until": null},
+  "m365": {"status": null, "note": "", "until": null}
+}

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Microsoft 365 Outage — Live Status</title>
+<title>SCE Platform Status</title>
 <style>
   :root{
     --bg:#f6f7f9;--card:#fff;--ink:#14171c;--muted:#5d6672;--line:#e3e6ea;
@@ -56,20 +56,59 @@
   .warn{background:var(--amberbg);color:var(--amber);padding:8px 12px;border-radius:8px;font-size:13px;margin-bottom:12px;display:none}
   .muted{color:var(--muted);font-size:13px}
   .banner-resolved{display:none;background:var(--greenbg);color:var(--green);font-weight:700;padding:12px 16px;border-radius:12px;margin-bottom:14px}
+
+  .s-maintenance{background:var(--greybg);color:var(--c1)}
+  header.site{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:10px}
+  header.site h1{font-size:21px}
+  nav.tabs{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px;margin-bottom:6px;scrollbar-width:none}
+  nav.tabs::-webkit-scrollbar{display:none}
+  nav.tabs a{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;font-size:14px;font-weight:600}
+  nav.tabs a.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .sdot{width:9px;height:9px;border-radius:50%;background:var(--grey);display:inline-block}
+  .sdot.healthy{background:var(--green)} .sdot.degraded,.sdot.recovering{background:var(--amber)} .sdot.outage{background:var(--red)} .sdot.maintenance{background:var(--c1)}
+  section.tab{display:none} section.tab.on{display:block}
+  .ovgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+  .ov{cursor:pointer;margin:0;transition:border-color .15s}
+  .ov:hover{border-color:var(--muted)}
+  .ov .hd{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:700;font-size:16px}
+  .ov .nt{margin-top:8px;font-size:14px}
+  .ov .src{margin-top:8px;font-size:12px;color:var(--muted)}
+  .banner{border-radius:12px;padding:12px 16px;margin-bottom:14px;font-weight:700}
+  .banner.healthy{background:var(--greenbg);color:var(--green)}
+  .banner.degraded,.banner.maintenance{background:var(--amberbg);color:var(--amber)}
+  .banner.outage{background:var(--redbg);color:var(--red)}
+  .banner.unknown{background:var(--greybg);color:var(--grey)}
+  .rows .row{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+  .rows .row:first-child{border-top:0}
+  .sub{margin:6px 0 0 0;padding-left:12px;border-left:2px solid var(--line)}
+  .sub .row{padding:4px 0;font-size:13px;border:0}
+  .tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 7px;border-radius:6px;background:var(--greybg);color:var(--muted)}
+  a{color:var(--c1)}
 </style>
 </head>
 <body>
 <div class="wrap">
+  <header class="site">
+    <div><h1>SCE Platform Status</h1><div class="muted" id="pfresh">Loading…</div></div>
+    <span class="live"><span class="dot off" id="liveDot"></span><span id="liveTxt">Connecting…</span></span>
+  </header>
+  <nav class="tabs"><a href="#overview" data-id="overview"><span class="sdot"></span>Overview</a><a href="#m365" data-id="m365"><span class="sdot"></span>Microsoft 365</a><a href="#ice" data-id="ice"><span class="sdot"></span>ICE</a><a href="#bloomberg" data-id="bloomberg"><span class="sdot"></span>Bloomberg</a><a href="#c9" data-id="c9"><span class="sdot"></span>Cloud9 Trader</a><a href="#krm22" data-id="krm22"><span class="sdot"></span>KRM22</a></nav>
   <div id="warn" class="warn"></div>
-  <div id="resolvedBanner" class="banner-resolved">✓ Microsoft has declared this incident resolved.</div>
 
+  <section class="tab" id="tab-overview">
+    <div id="ovbanner" class="banner unknown">Loading…</div>
+    <div class="ovgrid" id="ovgrid"></div>
+  </section>
+
+  <section class="tab" id="tab-m365">
+  <div id="resolvedBanner" class="banner-resolved">✓ Microsoft has declared this incident resolved.</div>
   <div class="card" id="header">
     <div class="top">
       <div>
-        <h1>Microsoft 365 Outage — Live Status</h1>
-        <div class="muted">Incidents <b>EX1550543</b> · <b>MO1550821</b></div>
+        <h1>Microsoft 365</h1>
+        <div class="muted">Incident tracking · last incident <b>EX1550543</b> · <b>MO1550821</b> (Nov 12–14)</div>
       </div>
-      <span class="live"><span class="dot off" id="liveDot"></span><span id="liveTxt">Connecting…</span></span>
+      
     </div>
     <div class="hero">
       <div class="kpi"><div class="l">Overall</div><div class="v"><span id="overall" class="pill s-unknown">—</span></div></div>
@@ -106,9 +145,16 @@
     <a href="https://azure.status.microsoft/en-us/status" target="_blank" rel="noopener">Azure status</a>
     <a href="https://downdetector.com/status/outlook/" target="_blank" rel="noopener">Downdetector — Outlook</a>
   </div>
-  <div class="muted" style="text-align:center;padding:4px 0 20px">Updates automatically every 15 minutes from Microsoft 365 Service Health (earlier entries from Microsoft's X posts and news reports). Times are approximate where marked "~".</div>
-</div>
+  
+  </section>
 
+  <section class="tab" id="tab-ice"></section>
+  <section class="tab" id="tab-bloomberg"></section>
+  <section class="tab" id="tab-c9"></section>
+  <section class="tab" id="tab-krm22"></section>
+
+  <div class="muted" style="text-align:center;padding:4px 0 20px">Checked automatically every 15 minutes. ICE from the official ICE Status Center; Bloomberg, Cloud9 and KRM22 have no public status feed, so their tabs show website checks plus any status set by hand.</div>
+</div>
 <script>
 (function(){
   const $ = id => document.getElementById(id);
@@ -226,6 +272,130 @@
     }
   }
   load(); setInterval(load, 60000);
+})();
+</script>
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const ORDER = ["overview","m365","ice","bloomberg","c9","krm22"];
+  const NAMES = {overview:"Overview", m365:"Microsoft 365", ice:"ICE", bloomberg:"Bloomberg", c9:"Cloud9 Trader", krm22:"KRM22"};
+  const LBL = {healthy:"Operational", degraded:"Degraded", outage:"Outage", maintenance:"Maintenance", unknown:"Unknown", recovering:"Recovering", resolved:"Resolved", restored:"Restored"};
+  const pillCls = s => "pill s-" + (["healthy","degraded","outage","maintenance","recovering","resolved","restored"].includes(s) ? s : "unknown");
+  const el = (tag, cls, txt) => { const e = document.createElement(tag); if(cls) e.className = cls; if(txt != null) e.textContent = txt; return e; };
+  const pill = s => el("span", pillCls(s), LBL[s] || "Unknown");
+  const fmt = iso => iso ? new Date(iso).toLocaleString("en-US",{timeZone:"America/New_York",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}) + " ET" : "—";
+  let P = null;
+
+  function show(){
+    let id = (location.hash || "#overview").slice(1); if(!ORDER.includes(id)) id = "overview";
+    document.querySelectorAll("section.tab").forEach(s => s.classList.toggle("on", s.id === "tab-" + id));
+    document.querySelectorAll("nav.tabs a").forEach(a => a.classList.toggle("on", a.dataset.id === id));
+    if(id === "m365") window.dispatchEvent(new Event("resize"));
+  }
+  window.addEventListener("hashchange", show);
+
+  function navDots(){
+    const byId = {}; (P && P.platforms || []).forEach(p => byId[p.id] = p);
+    document.querySelectorAll("nav.tabs a").forEach(a => {
+      const d = a.querySelector(".sdot"); if(!d) return;
+      const s = a.dataset.id === "overview" ? (P && P.overall) : (byId[a.dataset.id] || {}).overall;
+      d.className = "sdot " + (s || "unknown");
+    });
+  }
+
+  function overview(){
+    const host = $("ovgrid"); host.textContent = "";
+    const issues = P.platforms.filter(p => ["degraded","outage"].includes(p.overall));
+    const b = $("ovbanner"); const s = issues.length ? (issues.some(p=>p.overall==="outage")?"outage":"degraded") : (P.platforms.some(p=>p.overall==="maintenance")?"maintenance":"healthy");
+    b.className = "banner " + s;
+    b.textContent = issues.length ? "Issues: " + issues.map(p=>p.name).join(", ") : (s==="maintenance" ? "Maintenance in progress on some systems" : "All platforms operational");
+    P.platforms.forEach(p => {
+      const c = el("div","card ov"); c.onclick = () => location.hash = p.id;
+      const hd = el("div","hd"); hd.append(el("span",null,p.name), pill(p.overall)); c.append(hd);
+      c.append(el("div","nt",p.note || ""));
+      const src = el("div","src", (p.manual ? "Set manually · " : "") + (p.source || "") + " · since " + fmt(p.since));
+      c.append(src); host.append(c);
+    });
+  }
+
+  function platformTab(p){
+    const host = $("tab-" + p.id); if(!host || p.id === "m365") return; host.textContent = "";
+    const head = el("div","card");
+    const top = el("div","top"); const t = el("div"); t.append(el("h1",null,p.name));
+    t.append(el("div","muted", p.source || "")); top.append(t, pill(p.overall)); head.append(top);
+    head.append(el("div","note", p.note || ""));
+    if(p.manual){ const m = el("div","muted"); m.style.marginTop="6px"; m.textContent = "Status set manually" + (p.manual.until ? " until " + fmt(p.manual.until) : "") + " · automatic reading: " + (LBL[p.autoOverall]||p.autoOverall); head.append(m); }
+    const meta = el("div","muted"); meta.style.marginTop="6px"; meta.textContent = "In this state since " + fmt(p.since); head.append(meta);
+    if(p.about){ const a = el("div","muted",p.about); a.style.marginTop="6px"; head.append(a); }
+    host.append(head);
+
+    if((p.components||[]).length){
+      const c = el("div","card"); c.append(el("h2",null,"Components"));
+      const rows = el("div","rows");
+      p.components.forEach(cp => {
+        const r = el("div"); const line = el("div","row"); line.append(el("b",null,cp.name), pill(cp.status)); r.append(line);
+        if(cp.note) r.append(el("div","muted",cp.note));
+        if((cp.items||[]).length > 1 || (cp.items||[]).some(i=>i.name!==cp.name)){
+          const sub = el("div","sub");
+          cp.items.forEach(i => { const ir = el("div","row"); ir.append(el("span",null,i.name), el("span","muted",i.label)); sub.append(ir); });
+          r.append(sub);
+        }
+        rows.append(r);
+      });
+      c.append(rows); host.append(c);
+    }
+    if((p.maintenance||[]).length){
+      const c = el("div","card"); c.append(el("h2",null,"Scheduled maintenance (next 7 days)"));
+      const rows = el("div","rows");
+      p.maintenance.forEach(m => {
+        const r = el("div","row"); const l = el("div");
+        const h = el("b",null,m.subject); l.append(h);
+        if(m.active){ l.append(document.createTextNode(" ")); l.append(el("span","tag","In progress")); }
+        l.append(el("div","muted", fmt(m.start) + (m.end ? " – " + fmt(m.end) : "") + " · " + (m.platforms||[]).join(", ")));
+        if(m.message) l.append(el("div","muted",m.message));
+        r.append(l); rows.append(r);
+      });
+      c.append(rows); host.append(c);
+    }
+    if((p.checks||[]).length){
+      const c = el("div","card"); c.append(el("h2",null,"Website checks"));
+      const rows = el("div","rows");
+      p.checks.forEach(k => {
+        const r = el("div","row"); const l = el("div"); const a = el("a",null,k.name); a.href = k.url; a.target="_blank"; a.rel="noopener"; l.append(a);
+        l.append(el("div","muted", k.ok ? ("Responding" + (k.code ? " · HTTP " + k.code : "") + (k.ms ? " · " + k.ms + " ms" : "")) : "Not responding"));
+        r.append(l, pill(k.ok ? "healthy" : "outage")); rows.append(r);
+      });
+      c.append(rows);
+      c.append(el("div","muted","A website answering doesn't prove the app or terminal works, and vice versa."));
+      host.append(c);
+    }
+    const hist = (p.history||[]).slice().reverse();
+    const hc = el("div","card"); hc.append(el("h2",null,"Status changes"));
+    if(!hist.length) hc.append(el("div","muted","No changes recorded yet."));
+    else { const rows = el("div","rows"); hist.slice(0,20).forEach(h => { const r = el("div","row"); r.append(el("span","muted",fmt(h.at)), el("span",null,(LBL[h.from]||h.from) + " → " + (LBL[h.to]||h.to))); rows.append(r); }); hc.append(rows); }
+    host.append(hc);
+    const lc = el("div","card links"); lc.append(el("h2",null,"Official sources & support"));
+    if(p.statusPage){ const a = el("a",null,"Official status page"); a.href=p.statusPage; a.target="_blank"; a.rel="noopener"; lc.append(a); }
+    if(p.support) lc.append(el("div","muted",p.support));
+    host.append(lc);
+  }
+
+  function render(){
+    if(!P) return;
+    overview(); P.platforms.forEach(platformTab); navDots();
+    const f = $("pfresh"); if(f) f.textContent = "Checked " + fmt(P.lastChecked) + " · updates every 15 minutes";
+  }
+
+  async function load(){
+    try{
+      const r = await fetch("platforms.json?t=" + Date.now(), {cache:"no-store"});
+      if(!r.ok) throw new Error(r.status);
+      P = await r.json(); render();
+    }catch(e){
+      const f = $("pfresh"); if(f && !P) f.textContent = "Platform data not available yet.";
+    }
+  }
+  show(); load(); setInterval(load, 60000);
 })();
 </script>
 </body>

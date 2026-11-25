@@ -22,3 +22,12 @@ Setup (one time):
 6. Actions tab → "Update M365 status" → Run workflow.
 
 When every tracked incident is resolved, the page shows Resolved and the job stops changing the file.
+
+
+## Multi-platform dashboard
+
+Tabs: Overview, Microsoft 365, ICE, Bloomberg, Cloud9 Trader, KRM22. `scripts/check_platforms.py` writes `platforms.json` every 15 minutes.
+
+- **ICE**: read automatically from the public ICE Status Center feed. Which ICE systems count as WebICE, ICE Chat, ICE Connect etc. is set in `platforms.config.json`.
+- **Bloomberg, Cloud9, KRM22**: no public status feeds, so these tabs show "is the website answering" checks. Add your own portal URLs under `checks` in `platforms.config.json`.
+- **Manual status**: edit `manual.json` on GitHub (e.g. `"bloomberg": {"status": "degraded", "note": "Terminal slow per desk", "until": "2026-11-25T23:00:00Z"}`). The page updates within a couple of minutes. Set `status` back to `null` to clear it.

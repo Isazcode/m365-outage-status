@@ -1,0 +1,74 @@
+{
+  "_help": "Edit this file to change what the dashboard tracks. 'ice' components map to ICE Status Center platform IDs. 'checks' are simple 'does the website answer' tests run from GitHub. Add your own portal URLs (e.g. your KRM22 login page) to a platform's checks list.",
+  "platforms": [
+    {
+      "id": "ice",
+      "name": "ICE",
+      "type": "ice",
+      "statusPage": "https://www.ice.com/status",
+      "support": "ICE Help Desk +1 770 738 2101",
+      "components": [
+        {
+          "name": "WebICE (energy futures & OTC)",
+          "note": "WebICE is the trading screen for these ICE markets; ICE doesn't list WebICE on its own.",
+          "iceIds": ["ice-futures-us", "ice-futures-europe", "ice-endex", "ice-otc", "ice-ngx-1"]
+        },
+        {
+          "name": "ICE Chat",
+          "iceIds": ["ice-chat"]
+        },
+        {
+          "name": "ICE Connect",
+          "note": "ICE doesn't list ICE Connect by name; tracked through its Data & Analytics desktop and ICE Launcher entries.",
+          "iceIds": ["data-and-analytics", "ice-launcher"]
+        },
+        {
+          "name": "Clearing (ICE Clear US / Europe)",
+          "iceIds": ["ice-clear-us", "ice-clear-europe", "ice-ngx"]
+        },
+        {
+          "name": "Confirmations (ICE Link / eConfirm)",
+          "iceIds": ["ice-link", "e-confirm"]
+        }
+      ],
+      "checks": []
+    },
+    {
+      "id": "bloomberg",
+      "name": "Bloomberg Terminal",
+      "type": "checks",
+      "statusPage": null,
+      "support": "Bloomberg Help: press HELP twice on the Terminal, or call +1 212 318 2000",
+      "about": "Bloomberg doesn't publish a public status page. This tab shows website checks plus any status you set by hand.",
+      "components": [],
+      "checks": [
+        {"name": "Bloomberg Professional website", "url": "https://www.bloomberg.com/professional/"},
+        {"name": "Bloomberg Anywhere login", "url": "https://bba.bloomberg.net/"}
+      ]
+    },
+    {
+      "id": "c9",
+      "name": "Cloud9 Trader (C9)",
+      "type": "checks",
+      "statusPage": null,
+      "support": "Cloud9 / Symphony support",
+      "about": "Cloud9 doesn't publish a public status page. This tab shows website checks plus any status you set by hand.",
+      "components": [],
+      "checks": [
+        {"name": "Cloud9 Technologies website", "url": "https://c9tec.com/"}
+      ]
+    },
+    {
+      "id": "krm22",
+      "name": "KRM22",
+      "type": "checks",
+      "statusPage": null,
+      "support": "KRM22 support",
+      "about": "KRM22 doesn't publish a public status page. Add your KRM22 portal URL to platforms.config.json for a direct check.",
+      "components": [],
+      "checks": [
+        {"name": "KRM22 website", "url": "https://www.krm22.com/"}
+      ]
+    }
+  ]
+}
