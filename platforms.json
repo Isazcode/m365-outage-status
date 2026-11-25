@@ -1,6 +1,6 @@
 {
- "lastChecked": "2026-11-25T22:30:46Z",
- "nextCheck": "2026-11-25T22:47:46Z",
+ "lastChecked": "2026-11-25T22:40:12Z",
+ "nextCheck": "2026-11-25T22:57:12Z",
  "overall": "healthy",
  "platforms": [
   {
@@ -21,6 +21,96 @@
      "Live posts: Outlook / Teams down",
      "https://x.com/search?q=%28outlook%20OR%20teams%20OR%20%22microsoft%20365%22%29%20down&f=live"
     ]
+   ],
+   "advisories": 7,
+   "posts": [
+    {
+     "id": "IT1549049",
+     "kind": "advisory",
+     "service": "Microsoft Intune",
+     "title": "Some users may see delays receiving policies, apps, and other changes on Windows devices enrolled in Microsoft Intune",
+     "at": "2026-11-25T00:59:01Z"
+    },
+    {
+     "id": "MO1557494",
+     "kind": "advisory",
+     "service": "Microsoft 365 suite",
+     "title": "Some users may be unable to view organization information in multiple Microsoft 365 services",
+     "at": "2026-11-24T23:32:31Z"
+    },
+    {
+     "id": "TM1567135",
+     "kind": "advisory",
+     "service": "Microsoft Teams",
+     "title": "Users may not see Public Switched Telephone Network (PSTN) contact names shown on inbound Microsoft Teams call banners",
+     "at": "2026-11-24T20:49:20Z"
+    },
+    {
+     "id": "MO1535688",
+     "kind": "advisory",
+     "service": "Microsoft 365 suite",
+     "title": "Some admins' Microsoft 365 Copilot and Copilot Chat usage reports may be delayed in the Microsoft 365 admin center",
+     "at": "2026-11-03T17:44:54Z"
+    },
+    {
+     "id": "MO1457843",
+     "kind": "advisory",
+     "service": "Microsoft 365 suite",
+     "title": "Admins can't identify who deleted a Viva Engage community or its Microsoft 365 Group in Microsoft Entra ID audit logs",
+     "at": "2026-10-31T00:04:58Z"
+    },
+    {
+     "id": "MO1507859",
+     "kind": "advisory",
+     "service": "Microsoft 365 suite",
+     "title": "Some users may be missing the \"Meeting options\" button for Microsoft Teams meetings in multiple Microsoft 365 apps",
+     "at": "2026-10-14T20:22:48Z"
+    },
+    {
+     "id": "MO1447619",
+     "kind": "advisory",
+     "service": "Microsoft 365 suite",
+     "title": "Users may have been unable to sign into the OneNote Web Clipper",
+     "at": "2026-08-06T11:38:26Z"
+    }
+   ],
+   "services": [
+    {
+     "name": "Exchange Online / Outlook",
+     "status": "healthy"
+    },
+    {
+     "name": "Microsoft Teams",
+     "status": "healthy"
+    },
+    {
+     "name": "SharePoint Online / OneDrive",
+     "status": "healthy"
+    },
+    {
+     "name": "Microsoft 365 Copilot",
+     "status": "healthy"
+    },
+    {
+     "name": "Microsoft Defender XDR",
+     "status": "healthy"
+    },
+    {
+     "name": "Planner / To Do / Power BI / Print",
+     "status": "healthy"
+    },
+    {
+     "name": "M365 admin center / status page",
+     "status": "healthy"
+    },
+    {
+     "name": "Azure",
+     "status": "unknown"
+    },
+    {
+     "name": "Intune",
+     "status": "healthy"
+    }
    ],
    "autoOverall": "healthy",
    "history": [],
@@ -140,13 +230,76 @@
    "about": null,
    "xLinks": [
     [
+     "@ICE_Markets (official)",
+     "https://x.com/search?q=from%3AICE_Markets&f=live"
+    ],
+    [
      "Live posts: WebICE / ICE Chat issues",
      "https://x.com/search?q=%28WebICE%20OR%20%22ICE%20Chat%22%20OR%20%22ICE%20Connect%22%29%20%28down%20OR%20outage%20OR%20issues%29&f=live"
     ]
    ],
+   "statusLabel": null,
+   "links": [],
    "autoOverall": "healthy",
    "history": [],
    "since": "2026-11-25T14:51:08Z"
+  },
+  {
+   "overall": "healthy",
+   "note": "Websites responding. No official status feed, so app-level problems may not show here.",
+   "source": "Website checks (automatic)",
+   "checks": [
+    {
+     "name": "CME Direct server (login & download)",
+     "url": "https://cmedirect.cmegroup.com/",
+     "ok": true,
+     "code": 403,
+     "ms": 127
+    },
+    {
+     "name": "CME Group Login",
+     "url": "https://login.cmegroup.com/",
+     "ok": true,
+     "code": 200,
+     "ms": 544
+    },
+    {
+     "name": "CME Group website",
+     "url": "https://www.cmegroup.com/",
+     "ok": true,
+     "code": 403,
+     "ms": 101
+    }
+   ],
+   "id": "cme",
+   "name": "CME Direct",
+   "statusPage": "https://www.cmegroup.com/solutions/market-access/globex/trade-on-globex/about-the-global-command-center.html",
+   "support": "CME Global Command Center (24/6): US +1 800 438 8616",
+   "about": "CME doesn't publish a public status feed. This tab checks the CME Direct, CME Group Login and CME Group websites, plus any status you set by hand. During market halts the GCC sends updates every 15 minutes through its messaging system.",
+   "xLinks": [
+    [
+     "@CMEGroup (official)",
+     "https://x.com/search?q=from%3ACMEGroup&f=live"
+    ],
+    [
+     "Live posts: CME Direct / Globex issues",
+     "https://x.com/search?q=%28%22CME%20Direct%22%20OR%20Globex%20OR%20%22CME%20Group%22%29%20%28down%20OR%20outage%20OR%20halted%20OR%20issues%29&f=live"
+    ]
+   ],
+   "statusLabel": "CME Global Command Center (GCC)",
+   "links": [
+    [
+     "CME Group notices (Globex, CME Direct)",
+     "https://www.cmegroup.com/notices.html"
+    ],
+    [
+     "CME Direct help",
+     "https://www.cmegroup.com/tools-information/webhelp/cme-direct/cme-direct-trader-broker/Content/GettingStarted.html"
+    ]
+   ],
+   "autoOverall": "healthy",
+   "history": [],
+   "since": "2026-11-25T22:40:12Z"
   },
   {
    "overall": "healthy",
@@ -158,14 +311,14 @@
      "url": "https://www.bloomberg.com/professional/",
      "ok": true,
      "code": 403,
-     "ms": 82
+     "ms": 186
     },
     {
      "name": "Bloomberg Anywhere login",
      "url": "https://bba.bloomberg.net/",
      "ok": true,
      "code": 200,
-     "ms": 124
+     "ms": 451
     }
    ],
    "id": "bloomberg",
@@ -183,6 +336,8 @@
      "https://x.com/search?q=from%3ABloomberg%20%28terminal%20OR%20outage%20OR%20service%29&f=live"
     ]
    ],
+   "statusLabel": null,
+   "links": [],
    "autoOverall": "healthy",
    "history": [],
    "since": "2026-11-25T14:51:08Z"
@@ -197,7 +352,7 @@
      "url": "https://c9tec.com/",
      "ok": true,
      "code": 200,
-     "ms": 170
+     "ms": 347
     }
    ],
    "id": "c9",
@@ -211,6 +366,8 @@
      "https://x.com/search?q=%28%22C9%20Trader%22%20OR%20%22Cloud9%20Trader%22%20OR%20%22Cloud9%20Technologies%22%29%20%28down%20OR%20outage%20OR%20issues%29&f=live"
     ]
    ],
+   "statusLabel": null,
+   "links": [],
    "autoOverall": "healthy",
    "history": [],
    "since": "2026-11-25T14:51:08Z"
@@ -225,7 +382,7 @@
      "url": "https://www.krm22.com/",
      "ok": true,
      "code": 200,
-     "ms": 1402
+     "ms": 2047
     }
    ],
    "id": "krm22",
@@ -239,9 +396,79 @@
      "https://x.com/search?q=KRM22&f=live"
     ]
    ],
+   "statusLabel": null,
+   "links": [],
    "autoOverall": "healthy",
    "history": [],
    "since": "2026-11-25T14:51:08Z"
   }
- ]
+ ],
+ "summary": {
+  "platformsTotal": 6,
+  "platformsOk": 6,
+  "issues": [],
+  "checksTotal": 7,
+  "checksOk": 7,
+  "avgMs": 543,
+  "iceTotal": 13,
+  "iceOk": 13,
+  "m365Services": 9,
+  "m365Ok": 8,
+  "m365Advisories": 7,
+  "maintActive": 0,
+  "maintUpcoming": 0,
+  "nextMaint": null,
+  "lastChange": null,
+  "lastM365Incident": "2026-11-14T04:15:00Z",
+  "feed": [
+   {
+    "at": "2026-11-25T00:59:01Z",
+    "platform": "Microsoft 365",
+    "kind": "advisory",
+    "text": "IT1549049 \u00b7 Microsoft Intune: Some users may see delays receiving policies, apps, and other changes on Windows devices enrolled in Microsoft Intune"
+   },
+   {
+    "at": "2026-11-24T23:32:31Z",
+    "platform": "Microsoft 365",
+    "kind": "advisory",
+    "text": "MO1557494 \u00b7 Microsoft 365 suite: Some users may be unable to view organization information in multiple Microsoft 365 services"
+   },
+   {
+    "at": "2026-11-24T20:49:20Z",
+    "platform": "Microsoft 365",
+    "kind": "advisory",
+    "text": "TM1567135 \u00b7 Microsoft Teams: Users may not see Public Switched Telephone Network (PSTN) contact names shown on inbound Microsoft Teams call banners"
+   },
+   {
+    "at": "2026-11-14T04:15:00Z",
+    "platform": "Microsoft 365",
+    "kind": "resolved",
+    "text": "Nov 12\u201314 global outage (EX1550543 / MO1550821) resolved."
+   },
+   {
+    "at": "2026-11-03T17:44:54Z",
+    "platform": "Microsoft 365",
+    "kind": "advisory",
+    "text": "MO1535688 \u00b7 Microsoft 365 suite: Some admins' Microsoft 365 Copilot and Copilot Chat usage reports may be delayed in the Microsoft 365 admin center"
+   },
+   {
+    "at": "2026-10-31T00:04:58Z",
+    "platform": "Microsoft 365",
+    "kind": "advisory",
+    "text": "MO1457843 \u00b7 Microsoft 365 suite: Admins can't identify who deleted a Viva Engage community or its Microsoft 365 Group in Microsoft Entra ID audit logs"
+   },
+   {
+    "at": "2026-10-14T20:22:48Z",
+    "platform": "Microsoft 365",
+    "kind": "advisory",
+    "text": "MO1507859 \u00b7 Microsoft 365 suite: Some users may be missing the \"Meeting options\" button for Microsoft Teams meetings in multiple Microsoft 365 apps"
+   },
+   {
+    "at": "2026-08-06T11:38:26Z",
+    "platform": "Microsoft 365",
+    "kind": "advisory",
+    "text": "MO1447619 \u00b7 Microsoft 365 suite: Users may have been unable to sign into the OneNote Web Clipper"
+   }
+  ]
+ }
 }
