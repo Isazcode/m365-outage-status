@@ -1,6 +1,6 @@
 {
- "lastChecked": "2026-11-25T20:26:31Z",
- "nextCheck": "2026-11-25T20:43:31Z",
+ "lastChecked": "2026-11-25T22:30:46Z",
+ "nextCheck": "2026-11-25T22:47:46Z",
  "overall": "healthy",
  "platforms": [
   {
@@ -158,14 +158,14 @@
      "url": "https://www.bloomberg.com/professional/",
      "ok": true,
      "code": 403,
-     "ms": 98
+     "ms": 82
     },
     {
      "name": "Bloomberg Anywhere login",
      "url": "https://bba.bloomberg.net/",
      "ok": true,
      "code": 200,
-     "ms": 106
+     "ms": 124
     }
    ],
    "id": "bloomberg",
@@ -197,7 +197,7 @@
      "url": "https://c9tec.com/",
      "ok": true,
      "code": 200,
-     "ms": 152
+     "ms": 170
     }
    ],
    "id": "c9",
@@ -225,7 +225,7 @@
      "url": "https://www.krm22.com/",
      "ok": true,
      "code": 200,
-     "ms": 1115
+     "ms": 1402
     }
    ],
    "id": "krm22",
