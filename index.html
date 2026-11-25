@@ -106,7 +106,7 @@
     <div class="top">
       <div>
         <h1>Microsoft 365</h1>
-        <div class="muted">Incident tracking · last incident <b>EX1550543</b> · <b>MO1550821</b> (Nov 12–14)</div>
+        <div class="muted" id="incIds">Microsoft 365 service health</div>
       </div>
       
     </div>
@@ -139,7 +139,7 @@
 
   <div class="card links" id="links">
     <h2>Official sources</h2>
-    <a href="https://admin.microsoft.com/Adminportal/Home#/servicehealth" target="_blank" rel="noopener">Microsoft 365 admin center → Service health (EX1550543)</a>
+    <a href="https://admin.microsoft.com/Adminportal/Home#/servicehealth" target="_blank" rel="noopener">Microsoft 365 admin center → Service health</a>
     <a href="https://status.cloud.microsoft" target="_blank" rel="noopener">status.cloud.microsoft</a>
     <a href="https://x.com/MSFT365Status" target="_blank" rel="noopener">@MSFT365Status on X</a>
     <a href="https://azure.status.microsoft/en-us/status" target="_blank" rel="noopener">Azure status</a>
@@ -190,6 +190,9 @@
     $("overallNote").textContent = d.overallNote || "";
     $("lastChecked").textContent = fmtET(d.lastChecked);
     $("resolvedBanner").style.display = d.resolved ? "block" : "none";
+    const ids = (d.incidentIds && d.incidentIds.length) ? d.incidentIds : ["EX1550543","MO1550821"];
+    $("incIds").textContent = (d.resolved ? "Last incident: " : "Active incident: ") + ids.join(" · ") + (d.incidentTitles && !d.resolved ? " — " + d.incidentTitles : "");
+    $("downdetector").style.display = (d.downdetector && d.downdetector.length) ? "" : "none";
 
     const g = $("svcGrid"); g.textContent = "";
     (d.services || []).forEach(s => {

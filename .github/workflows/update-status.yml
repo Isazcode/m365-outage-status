@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  id-token: write   # lets the job prove its identity to Entra (no secret needed)
 
 concurrency:
   group: update-status
@@ -27,15 +28,14 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Microsoft 365 (only if the Entra app secrets are set)
-        if: ${{ env.MS_CLIENT_SECRET != '' }}
+      - name: Microsoft 365 (runs once the Entra app is set up)
+        if: ${{ env.MS_CLIENT_ID != '' }}
         continue-on-error: true
         env:
-          MS_TENANT_ID: ${{ secrets.MS_TENANT_ID }}
-          MS_CLIENT_ID: ${{ secrets.MS_CLIENT_ID }}
+          MS_TENANT_ID: ${{ vars.MS_TENANT_ID || secrets.MS_TENANT_ID }}
           MS_CLIENT_SECRET: ${{ secrets.MS_CLIENT_SECRET }}
-          ISSUE_IDS: ${{ vars.ISSUE_IDS }}
           CHECK_INTERVAL_MIN: "15"
+          FORCE_WRITE: ${{ github.event_name != 'schedule' && '1' || '' }}
         run: python scripts/update_status.py
 
       - name: ICE, Bloomberg, Cloud9, KRM22
@@ -47,14 +47,14 @@ jobs:
       - name: Commit if changed
         run: |
           git add -N platforms.json 2>/dev/null || true
-          if git diff --quiet -- status.json platforms.json; then
+          if git diff --quiet -- status.json platforms.json && [ -z "$(git status --porcelain archive 2>/dev/null)" ]; then
             echo "No changes"; exit 0
           fi
           git config user.name "status-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add status.json platforms.json
+          git add status.json platforms.json archive 2>/dev/null || git add status.json platforms.json
           git commit -m "Auto status update $(TZ=America/New_York date '+%-I:%M %p ET')"
           git pull --rebase origin main || true
           git push
     env:
-      MS_CLIENT_SECRET: ${{ secrets.MS_CLIENT_SECRET }}
+      MS_CLIENT_ID: ${{ vars.MS_CLIENT_ID || secrets.MS_CLIENT_ID }}

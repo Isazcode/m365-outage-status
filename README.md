@@ -12,14 +12,15 @@ This is an unofficial tracker compiled from Microsoft's public status posts and 
 `.github/workflows/update-status.yml` runs every 15 minutes and calls `scripts/update_status.py`,
 which reads Microsoft 365 Service Health from Microsoft Graph and updates `status.json`.
 
-Setup (one time):
-1. Entra admin center → App registrations → New registration (e.g. "m365-status-bot").
-2. API permissions → Microsoft Graph → **Application** → `ServiceHealth.Read.All` → Grant admin consent.
-3. Certificates & secrets → New client secret.
-4. GitHub repo → Settings → Secrets and variables → Actions → add secrets
-   `MS_TENANT_ID`, `MS_CLIENT_ID`, `MS_CLIENT_SECRET`.
-5. Optional variable `ISSUE_IDS` (default `EX1550543,MO1550821`; set `auto` to track any open Exchange/M365 incident).
-6. Actions tab → "Update M365 status" → Run workflow.
+Setup (one time, no secret stored anywhere):
+1. Entra admin center → App registrations → New registration ("m365-status-bot", single tenant, no redirect URI).
+2. API permissions → Add → Microsoft Graph → **Application permissions** → `ServiceHealth.Read.All` → **Grant admin consent**.
+3. Certificates & secrets → **Federated credentials** → Add credential → "GitHub Actions deploying Azure resources":
+   Organization `Isazcode`, Repository `m365-outage-status`, Entity type **Branch**, Branch `main`, Name `github-main`.
+4. GitHub repo → Settings → Secrets and variables → Actions → **Variables** tab → add `MS_TENANT_ID` and `MS_CLIENT_ID` (from the app's Overview page).
+5. Actions tab → "Update platform status" → Run workflow.
+
+(A client secret in `MS_CLIENT_SECRET` also works, but isn't needed.)
 
 When every tracked incident is resolved, the page shows Resolved and the job stops changing the file.
 
