@@ -55,7 +55,11 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add status.json platforms.json archive 2>/dev/null || git add status.json platforms.json
           git commit -m "Auto status update $(TZ=America/New_York date '+%-I:%M %p ET')"
-          git pull --rebase origin main || true
+          if ! git pull --rebase -X theirs origin main; then
+            # Another run updated the same files first; its data is just as fresh, so drop ours.
+            git rebase --abort || true
+            echo "Newer status already pushed by another run; skipping this commit."; exit 0
+          fi
           git push
     env:
       MS_CLIENT_ID: ${{ vars.MS_CLIENT_ID || 'b0702174-db7d-4817-b661-78dbfbd41f78' }}   # m365-status-bot app (not secret; sign-in uses the federated credential)
