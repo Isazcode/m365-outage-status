@@ -38,12 +38,14 @@ jobs:
         run: python scripts/update_status.py
 
       - name: ICE, Bloomberg, Cloud9, KRM22
+        if: ${{ always() }}
         env:
           CHECK_INTERVAL_MIN: "15"
           FORCE_WRITE: ${{ github.event_name != 'schedule' && '1' || '' }}
         run: python scripts/check_platforms.py
 
       - name: Commit if changed
+        if: ${{ always() }}
         run: |
           git add -N platforms.json 2>/dev/null || true
           if git diff --quiet -- status.json platforms.json && [ -z "$(git status --porcelain archive 2>/dev/null)" ]; then

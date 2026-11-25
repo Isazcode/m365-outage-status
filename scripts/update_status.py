@@ -22,6 +22,7 @@ import json
 import os
 import re
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
@@ -87,8 +88,17 @@ def iso(ts):
 
 def _post(url, fields):
     req = urllib.request.Request(url, data=urllib.parse.urlencode(fields).encode())
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.load(r)
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return json.load(r)
+    except urllib.error.HTTPError as e:
+        body = e.read().decode(errors="replace")
+        try:
+            j = json.loads(body)
+            body = f"{j.get('error')}: {(j.get('error_description') or '').splitlines()[0]}"
+        except Exception:
+            body = body[:300]
+        sys.exit(f"Entra sign-in failed (HTTP {e.code}) -> {body}")
 
 
 def github_oidc_token():
@@ -96,7 +106,15 @@ def github_oidc_token():
     req = urllib.request.Request(url, headers={
         "Authorization": "Bearer " + os.environ["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]})
     with urllib.request.urlopen(req, timeout=30) as r:
-        return json.load(r)["value"]
+        tok = json.load(r)["value"]
+    try:  # log only the identity claims (never the token)
+        import base64
+        payload = tok.split(".")[1] + "=" * (-len(tok.split(".")[1]) % 4)
+        claims = json.loads(base64.urlsafe_b64decode(payload))
+        print("GitHub OIDC subject:", claims.get("sub"), "| aud:", claims.get("aud"))
+    except Exception:
+        pass
+    return tok
 
 
 def get_token():
@@ -117,8 +135,12 @@ def get_token():
 
 def graph(token, url):
     req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.load(r)
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return json.load(r)
+    except urllib.error.HTTPError as e:
+        body = e.read().decode(errors="replace")[:300]
+        raise RuntimeError(f"Graph HTTP {e.code} for {url.split('?')[0]}: {body}") from None
 
 
 def clean(text):
