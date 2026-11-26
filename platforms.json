@@ -1,6 +1,6 @@
 {
- "lastChecked": "2026-11-26T13:45:46Z",
- "nextCheck": "2026-11-26T14:02:46Z",
+ "lastChecked": "2026-11-26T14:00:47Z",
+ "nextCheck": "2026-11-26T14:17:47Z",
  "overall": "healthy",
  "platforms": [
   {
@@ -297,21 +297,21 @@
      "url": "https://cmedirect.cmegroup.com/",
      "ok": true,
      "code": 403,
-     "ms": 133
+     "ms": 110
     },
     {
      "name": "CME Group Login",
      "url": "https://login.cmegroup.com/",
      "ok": true,
      "code": 200,
-     "ms": 654
+     "ms": 655
     },
     {
      "name": "CME Group website",
      "url": "https://www.cmegroup.com/",
      "ok": true,
      "code": 403,
-     "ms": 75
+     "ms": 151
     }
    ],
    "id": "cme",
@@ -364,14 +364,14 @@
      "url": "https://www.bloomberg.com/professional/",
      "ok": true,
      "code": 403,
-     "ms": 103
+     "ms": 106
     },
     {
      "name": "Bloomberg Anywhere login",
      "url": "https://bba.bloomberg.net/",
      "ok": true,
      "code": 200,
-     "ms": 497
+     "ms": 435
     }
    ],
    "id": "bloomberg",
@@ -423,7 +423,7 @@
      "url": "https://c9tec.com/",
      "ok": true,
      "code": 200,
-     "ms": 140
+     "ms": 135
     }
    ],
    "id": "c9",
@@ -458,8 +458,8 @@
      "name": "KRM22 website",
      "url": "https://www.krm22.com/",
      "ok": true,
-     "code": 202,
-     "ms": 609
+     "code": 200,
+     "ms": 1672
     }
    ],
    "id": "krm22",
@@ -492,7 +492,7 @@
   "issues": [],
   "checksTotal": 7,
   "checksOk": 7,
-  "avgMs": 315,
+  "avgMs": 466,
   "iceTotal": 13,
   "iceOk": 13,
   "m365Services": 8,
