@@ -1,0 +1,51 @@
+{
+  "_help": "Reference links shown on the Offices tab. Public information only — no site detail. Live up/down state comes from offices.json, which the private network-ops repo writes every 15 minutes.",
+  "isps": {
+    "AT&T": {
+      "statusPage": "https://www.att.com/outages/",
+      "support": "AT&T Business care: +1 800 321 2000",
+      "links": [
+        ["AT&T outage map", "https://www.att.com/outages/"],
+        ["Downdetector: AT&T", "https://downdetector.com/status/att/"]
+      ],
+      "xLinks": [
+        ["@ATTBusiness (official)", "https://x.com/search?q=from%3AATTBusiness&f=live"],
+        ["Live posts: AT&T fiber outage", "https://x.com/search?q=%28ATT%20OR%20%22AT%26T%22%29%20%28fiber%20OR%20internet%29%20%28down%20OR%20outage%29&f=live"]
+      ]
+    },
+    "Optimum": {
+      "statusPage": "https://www.optimum.net/support/service-outages/",
+      "support": "Optimum Business: +1 866 575 8000",
+      "links": [
+        ["Optimum service outages", "https://www.optimum.net/support/service-outages/"],
+        ["Downdetector: Optimum", "https://downdetector.com/status/optimum/"],
+        ["StatusGator: Optimum", "https://statusgator.com/services/optimum"]
+      ],
+      "xLinks": [
+        ["@OptimumHelp (official)", "https://x.com/search?q=from%3AOptimumHelp&f=live"],
+        ["Live posts: Optimum Connecticut outage", "https://x.com/search?q=Optimum%20%28Connecticut%20OR%20Stamford%20OR%20CT%29%20%28down%20OR%20outage%29&f=live"]
+      ]
+    },
+    "Essensys": {
+      "statusPage": "https://www.essensys.tech/contact",
+      "support": "Via building management / essensys support desk",
+      "links": [
+        ["essensys support", "https://www.essensys.tech/contact"]
+      ],
+      "xLinks": [
+        ["Live posts: essensys", "https://x.com/search?q=essensys&f=live"]
+      ],
+      "note": "Building-managed circuit. Faults go through building management as well as the provider."
+    },
+    "Backbone Connect": {
+      "statusPage": "https://www.backboneconnect.co.uk/contact-us/",
+      "support": "Backbone Connect NOC (see contract for the 24/7 number)",
+      "links": [
+        ["Backbone Connect contact", "https://www.backboneconnect.co.uk/contact-us/"]
+      ],
+      "xLinks": [
+        ["Live posts: Backbone Connect", "https://x.com/search?q=%22Backbone%20Connect%22&f=live"]
+      ]
+    }
+  }
+}

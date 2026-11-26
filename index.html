@@ -78,6 +78,14 @@
   .banner.degraded,.banner.maintenance{background:var(--amberbg);color:var(--amber)}
   .banner.outage{background:var(--redbg);color:var(--red)}
   .banner.unknown{background:var(--greybg);color:var(--grey)}
+  .bar{display:flex;gap:2px;align-items:flex-end;margin:10px 0 4px}
+  .bar i{flex:1 1 0;min-width:2px;height:26px;border-radius:2px;background:var(--grey);opacity:.25}
+  .bar i.healthy{background:var(--green);opacity:1} .bar i.degraded{background:var(--amber);opacity:1}
+  .bar i.outage{background:var(--red);opacity:1}
+  .bar i.unknown{background:var(--grey);opacity:.22}
+  .barlbl{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+  .offrow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .offisp{font-size:13px;color:var(--muted)}
   .rows .row{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line);font-size:14px}
   .rows .row:first-child{border-top:0}
   .sub{margin:6px 0 0 0;padding-left:12px;border-left:2px solid var(--line)}
@@ -107,7 +115,7 @@
     <div><h1>SCE Platform Status</h1><div class="muted" id="pfresh">Loading…</div></div>
     <span class="live"><span class="dot off" id="liveDot"></span><span id="liveTxt">Connecting…</span></span>
   </header>
-  <nav class="tabs"><a href="#overview" data-id="overview"><span class="sdot"></span>Overview</a><a href="#m365" data-id="m365"><span class="sdot"></span>Microsoft 365</a><a href="#ice" data-id="ice"><span class="sdot"></span>ICE</a><a href="#cme" data-id="cme"><span class="sdot"></span>CME Direct</a><a href="#bloomberg" data-id="bloomberg"><span class="sdot"></span>Bloomberg</a><a href="#c9" data-id="c9"><span class="sdot"></span>Cloud9 Trader</a><a href="#krm22" data-id="krm22"><span class="sdot"></span>KRM22</a></nav>
+  <nav class="tabs"><a href="#overview" data-id="overview"><span class="sdot"></span>Overview</a><a href="#offices" data-id="offices"><span class="sdot"></span>Offices</a><a href="#m365" data-id="m365"><span class="sdot"></span>Microsoft 365</a><a href="#ice" data-id="ice"><span class="sdot"></span>ICE</a><a href="#cme" data-id="cme"><span class="sdot"></span>CME Direct</a><a href="#bloomberg" data-id="bloomberg"><span class="sdot"></span>Bloomberg</a><a href="#c9" data-id="c9"><span class="sdot"></span>Cloud9 Trader</a><a href="#krm22" data-id="krm22"><span class="sdot"></span>KRM22</a></nav>
   <div id="warn" class="warn"></div>
 
   <section class="tab" id="tab-overview">
@@ -121,6 +129,8 @@
         <div class="muted" style="margin-top:8px">These sites don't allow free automatic reading, so the links open them directly. X posts and user reports are unverified.</div></div>
     </div>
   </section>
+
+  <section class="tab" id="tab-offices"></section>
 
   <section class="tab" id="tab-m365">
   <div id="resolvedBanner" class="banner-resolved">✓ Microsoft has declared this incident resolved.</div>
@@ -206,6 +216,7 @@
     }
   }
   setInterval(tick, 1000);
+
 
   function render(){
     const d = state; if(!d) return;
@@ -303,14 +314,16 @@
 <script>
 (function(){
   const $ = id => document.getElementById(id);
-  const ORDER = ["overview","m365","ice","cme","bloomberg","c9","krm22"];
-  const NAMES = {overview:"Overview", m365:"Microsoft 365", ice:"ICE", cme:"CME Direct", bloomberg:"Bloomberg", c9:"Cloud9 Trader", krm22:"KRM22"};
+  const ORDER = ["overview","offices","m365","ice","cme","bloomberg","c9","krm22"];
+  const NAMES = {overview:"Overview", offices:"Offices", m365:"Microsoft 365", ice:"ICE", cme:"CME Direct", bloomberg:"Bloomberg", c9:"Cloud9 Trader", krm22:"KRM22"};
   const LBL = {healthy:"Operational", degraded:"Degraded", outage:"Outage", maintenance:"Maintenance", unknown:"Unknown", recovering:"Recovering", resolved:"Resolved", restored:"Restored"};
   const pillCls = s => "pill s-" + (["healthy","degraded","outage","maintenance","recovering","resolved","restored"].includes(s) ? s : "unknown");
   const el = (tag, cls, txt) => { const e = document.createElement(tag); if(cls) e.className = cls; if(txt != null) e.textContent = txt; return e; };
   const pill = s => el("span", pillCls(s), LBL[s] || "Unknown");
   const fmt = iso => iso ? new Date(iso).toLocaleString("en-US",{timeZone:"America/New_York",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}) + " ET" : "—";
   let P = null;
+  const RANK = {healthy:0, resolved:0, restored:0, maintenance:1, unknown:1, recovering:2, degraded:2, outage:3};
+  const worstOf = list => (list||[]).filter(Boolean).reduce((a,b) => (RANK[b]||0) > (RANK[a]||0) ? b : a, "healthy");
 
   function show(){
     let id = (location.hash || "#overview").slice(1); if(!ORDER.includes(id)) id = "overview";
@@ -324,17 +337,37 @@
     const byId = {}; (P && P.platforms || []).forEach(p => byId[p.id] = p);
     document.querySelectorAll("nav.tabs a").forEach(a => {
       const d = a.querySelector(".sdot"); if(!d) return;
-      const s = a.dataset.id === "overview" ? (P && P.overall) : (byId[a.dataset.id] || {}).overall;
+      let s;
+      if(a.dataset.id === "overview") s = worstOf([P && P.overall, O && O.overall]);
+      else if(a.dataset.id === "offices") s = O && O.overall;
+      else s = (byId[a.dataset.id] || {}).overall;
       d.className = "sdot " + (s || "unknown");
     });
   }
 
   function overview(){
     const host = $("ovgrid"); host.textContent = "";
+    const offIssues = ((O && O.offices) || []).filter(o => ["degraded","outage"].includes(o.state));
     const issues = P.platforms.filter(p => ["degraded","outage"].includes(p.overall));
-    const b = $("ovbanner"); const s = issues.length ? (issues.some(p=>p.overall==="outage")?"outage":"degraded") : (P.platforms.some(p=>p.overall==="maintenance")?"maintenance":"healthy");
+    const named = issues.map(p => p.name).concat(offIssues.map(o => o.name + " office"));
+    const b = $("ovbanner");
+    const s = named.length
+      ? ((issues.some(p => p.overall === "outage") || offIssues.some(o => o.state === "outage")) ? "outage" : "degraded")
+      : (P.platforms.some(p => p.overall === "maintenance") ? "maintenance" : "healthy");
     b.className = "banner " + s;
-    b.textContent = issues.length ? "Issues: " + issues.map(p=>p.name).join(", ") : (s==="maintenance" ? "Maintenance in progress on some systems" : "All platforms operational");
+    b.textContent = named.length ? "Issues: " + named.join(", ")
+      : (s === "maintenance" ? "Maintenance in progress on some systems"
+                             : "All platforms and offices operational");
+    if(O){
+      const c = el("div","card ov"); c.onclick = () => location.hash = "offices";
+      const hd = el("div","hd"); hd.append(el("span",null,"Offices"), pill(O.overall)); c.append(hd);
+      const okCount = (O.offices||[]).filter(o => o.state === "healthy").length;
+      c.append(el("div","nt", offIssues.length
+        ? offIssues.map(o => o.name + " — " + o.reason).join(" · ")
+        : okCount + " of " + (O.offices||[]).length + " offices online and normal"));
+      c.append(el("div","src","SCE gateways · every 15 min"));
+      host.append(c);
+    }
     P.platforms.forEach(p => {
       const c = el("div","card ov"); c.onclick = () => location.hash = p.id;
       const hd = el("div","hd"); hd.append(el("span",null,p.name), pill(p.overall)); c.append(hd);
@@ -357,6 +390,16 @@
     const add = (l, v, d, tone) => { const c = el("div","stat" + (tone ? " " + tone + "-s" : "")); c.append(el("div","l",l), el("div","v",v)); if(d) c.append(el("div","d",d)); host.append(c); };
     const n = S.platformsTotal || P.platforms.length, ok = S.platformsOk != null ? S.platformsOk : P.platforms.filter(p=>p.overall==="healthy").length;
     add("Platforms operational", ok + " / " + n, (S.issues||[]).length ? "Issues: " + S.issues.join(", ") : "No active issues", ok === n ? "good" : (S.issues||[]).length ? "bad" : "warn");
+    if(O && (O.offices||[]).length){
+      const seen = O.offices.filter(o => o.state !== "unknown");
+      const up = O.offices.filter(o => o.state === "healthy").length;
+      const bad = O.offices.filter(o => o.state === "degraded" || o.state === "outage");
+      add("Offices online", up + " / " + O.offices.length,
+          bad.length ? bad.map(o => o.name).join(", ")
+                     : (seen.length ? "Every office normal" : "Waiting for first reading"),
+          !seen.length ? "" : bad.some(o => o.state === "outage") ? "bad"
+                        : bad.length ? "warn" : "good");
+    }
     if(S.m365Services) add("Microsoft 365 services", S.m365Ok + " / " + S.m365Services, (S.m365Advisories||0) + " minor advisor" + (S.m365Advisories === 1 ? "y" : "ies") + " open", S.m365Ok === S.m365Services ? "good" : "warn");
     if(S.iceTotal) add("ICE systems normal", S.iceOk + " / " + S.iceTotal, "Per the ICE Status Center", S.iceOk === S.iceTotal ? "good" : "warn");
     if(S.checksTotal) add("Websites responding", S.checksOk + " / " + S.checksTotal, S.avgMs ? "Avg response " + S.avgMs + " ms" : "", S.checksOk === S.checksTotal ? "good" : "warn");
@@ -463,9 +506,91 @@
     host.append(lc);
   }
 
+  // ---- Offices (own internet, from SCE's gateways) -----------------------
+  let O = null, OC = null;
+
+  function uptimeBar(days){
+    const wrap = el("div");
+    const bar = el("div","bar");
+    days.forEach(d => { const i = el("i", d.s); i.title = d.d + " · " + (LBL[d.s] || "No data"); bar.append(i); });
+    wrap.append(bar);
+    const lbl = el("div","barlbl");
+    const known = days.filter(d => d.s !== "unknown");
+    const ok = known.filter(d => d.s === "healthy").length;
+    lbl.append(el("span", null, days.length + " days ago"),
+               el("span", null, known.length ? ok + " of " + known.length + " days clear" : "Building history"),
+               el("span", null, "Today"));
+    wrap.append(lbl);
+    return wrap;
+  }
+
+  function officesTab(){
+    const host = $("tab-offices"); if(!host) return; host.textContent = "";
+    if(!O){ host.append(el("div","card muted","Office status not available yet.")); return; }
+
+    const head = el("div","card");
+    const top = el("div","top"); const t = el("div");
+    t.append(el("h1",null,"Office internet"));
+    t.append(el("div","muted","Measured from SCE's own gateway in each office, every 15 minutes"));
+    top.append(t, pill(O.overall)); head.append(top);
+    const bad = (O.offices||[]).filter(o => o.state === "outage" || o.state === "degraded");
+    const known = (O.offices||[]).filter(o => o.state !== "unknown");
+    head.append(el("div","note", bad.length
+      ? bad.map(o => o.name + " — " + o.reason).join(" · ")
+      : !known.length ? "Waiting for the first reading from the office gateways."
+      : known.length < (O.offices||[]).length
+        ? known.length + " of " + O.offices.length + " offices reporting, all normal."
+        : "Every office is online and within its normal range."));
+    head.append(el("div","muted","Updated " + fmt(O.generated)));
+    host.append(head);
+
+    (O.offices||[]).forEach(o => {
+      const c = el("div","card");
+      const row = el("div","offrow");
+      const left = el("div");
+      left.append(el("b",null,o.name + (o.city ? " · " + o.city : "")));
+      left.append(el("div","offisp", (o.isp ? o.isp : "") + " · in this state since " + fmt(o.since)
+        + (o.source === "set by hand" ? " · set by hand" : "")));
+      row.append(left, pill(o.state));
+      c.append(row);
+      if(o.reason && o.state !== "healthy") c.append(el("div","note", o.reason));
+      c.append(uptimeBar(o.days || []));
+
+      const isp = ((OC && OC.isps) || {})[o.isp];
+      if(isp){
+        if(isp.note) c.append(el("div","muted", isp.note));
+        const lk = el("div","links"); lk.style.marginTop = "8px";
+        (isp.links||[]).concat((isp.xLinks||[]).map(([x,u]) => ["X: " + x, u])).forEach(([txt,u]) => {
+          const a = el("a",null,txt); a.href=u; a.target="_blank"; a.rel="noopener"; lk.append(a);
+        });
+        if(isp.support) lk.append(el("div","muted", isp.support));
+        c.append(lk);
+      }
+      host.append(c);
+    });
+
+    host.append(el("div","card muted",
+      "Green means the office gateway reported a healthy connection that day; amber means it "
+      + "dropped out or ran slow; red means it was down. Speeds and site details are deliberately "
+      + "not published here — they are in the Friday network report."));
+  }
+
+  async function loadOffices(){
+    try{
+      if(!OC){
+        const c = await fetch("offices.config.json?t=" + Date.now(), {cache:"no-store"});
+        if(c.ok) OC = await c.json();
+      }
+      const r = await fetch("offices.json?t=" + Date.now(), {cache:"no-store"});
+      if(!r.ok) throw new Error(r.status);
+      O = await r.json();
+    }catch(e){ /* leave O as it was; the tab shows the placeholder */ }
+    officesTab(); if(P) overview(); navDots();
+  }
+
   function render(){
     if(!P) return;
-    overview(); P.platforms.forEach(platformTab); navDots();
+    overview(); P.platforms.forEach(platformTab); officesTab(); navDots();
     const f = $("pfresh"); if(f) f.textContent = "Checked " + fmt(P.lastChecked) + " · updates every 15 minutes";
   }
 
@@ -478,7 +603,8 @@
       const f = $("pfresh"); if(f && !P) f.textContent = "Platform data not available yet.";
     }
   }
-  show(); load(); setInterval(load, 60000);
+  show(); load(); loadOffices();
+  setInterval(load, 60000); setInterval(loadOffices, 60000);
 })();
 </script>
 </body>
