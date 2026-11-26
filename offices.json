@@ -1,16 +1,16 @@
 {
- "generated": "2026-11-26T02:20:43Z",
- "overall": "unknown",
+ "generated": "2026-11-26T17:39:43Z",
+ "overall": "healthy",
  "offices": [
   {
    "id": "miami",
    "name": "Miami",
    "city": "Coral Gables, FL",
    "isp": "AT&T",
-   "state": "unknown",
-   "reason": "Waiting for the first reading",
+   "state": "healthy",
+   "reason": "Normal",
    "source": "automatic",
-   "since": "2026-11-26T02:20:43Z",
+   "since": "2026-11-26T17:39:43Z",
    "days": [
     {
      "d": "2026-08-29",
@@ -250,127 +250,127 @@
     },
     {
      "d": "2026-10-27",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-28",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-29",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-30",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-31",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-01",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-02",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-03",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-04",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-05",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-06",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-07",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-08",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-09",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-10",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-11",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-12",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-13",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-14",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-15",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-16",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-17",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-18",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-19",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-20",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-21",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-22",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-23",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-24",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-25",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-26",
-     "s": "unknown"
+     "s": "healthy"
     }
    ]
   },
@@ -379,10 +379,10 @@
    "name": "Houston",
    "city": "Houston, TX",
    "isp": "AT&T",
-   "state": "unknown",
-   "reason": "Waiting for the first reading",
+   "state": "healthy",
+   "reason": "Normal",
    "source": "automatic",
-   "since": "2026-11-26T02:20:43Z",
+   "since": "2026-11-26T17:39:43Z",
    "days": [
     {
      "d": "2026-08-29",
@@ -622,127 +622,127 @@
     },
     {
      "d": "2026-10-27",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-28",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-29",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-30",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-31",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-01",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-02",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-03",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-04",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-05",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-06",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-07",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-08",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-09",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-10",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-11",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-12",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-13",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-14",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-15",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-16",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-17",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-18",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-19",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-20",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-21",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-22",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-23",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-24",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-25",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-26",
-     "s": "unknown"
+     "s": "healthy"
     }
    ]
   },
@@ -751,10 +751,10 @@
    "name": "Stamford",
    "city": "Stamford, CT",
    "isp": "Optimum",
-   "state": "unknown",
-   "reason": "Waiting for the first reading",
+   "state": "healthy",
+   "reason": "Normal",
    "source": "automatic",
-   "since": "2026-11-26T02:20:43Z",
+   "since": "2026-11-26T17:39:43Z",
    "days": [
     {
      "d": "2026-08-29",
@@ -994,127 +994,127 @@
     },
     {
      "d": "2026-10-27",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-28",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-29",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-30",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-10-31",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-01",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-02",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-03",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-04",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-05",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-06",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-07",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-08",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-09",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-10",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-11",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-12",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-13",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-14",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-15",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-16",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-17",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-18",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-19",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-20",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-21",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-22",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-23",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-24",
-     "s": "unknown"
+     "s": "outage"
     },
     {
      "d": "2026-11-25",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-26",
-     "s": "unknown"
+     "s": "healthy"
     }
    ]
   },
@@ -1123,10 +1123,10 @@
    "name": "New York",
    "city": "New York, NY",
    "isp": "Essensys",
-   "state": "unknown",
-   "reason": "Waiting for the first reading",
+   "state": "healthy",
+   "reason": "Normal",
    "source": "automatic",
-   "since": "2026-11-26T02:20:43Z",
+   "since": "2026-11-26T17:39:43Z",
    "days": [
     {
      "d": "2026-08-29",
@@ -1366,127 +1366,127 @@
     },
     {
      "d": "2026-10-27",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-28",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-29",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-30",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-31",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-01",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-02",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-03",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-04",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-05",
-     "s": "unknown"
+     "s": "degraded"
     },
     {
      "d": "2026-11-06",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-07",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-08",
-     "s": "unknown"
+     "s": "outage"
     },
     {
      "d": "2026-11-09",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-10",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-11",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-12",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-13",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-14",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-15",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-16",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-17",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-18",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-19",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-20",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-21",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-22",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-23",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-24",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-25",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-26",
-     "s": "unknown"
+     "s": "healthy"
     }
    ]
   },
@@ -1495,10 +1495,10 @@
    "name": "London",
    "city": "London, UK",
    "isp": "Backbone Connect",
-   "state": "unknown",
-   "reason": "Waiting for the first reading",
+   "state": "healthy",
+   "reason": "Normal",
    "source": "automatic",
-   "since": "2026-11-26T02:20:43Z",
+   "since": "2026-11-26T17:39:43Z",
    "days": [
     {
      "d": "2026-08-29",
@@ -1738,127 +1738,127 @@
     },
     {
      "d": "2026-10-27",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-28",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-29",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-30",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-10-31",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-01",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-02",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-03",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-04",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-05",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-06",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-07",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-08",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-09",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-10",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-11",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-12",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-13",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-14",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-15",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-16",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-17",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-18",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-19",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-20",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-21",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-22",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-23",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-24",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-25",
-     "s": "unknown"
+     "s": "healthy"
     },
     {
      "d": "2026-11-26",
-     "s": "unknown"
+     "s": "healthy"
     }
    ]
   }
