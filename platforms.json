@@ -1,13 +1,13 @@
 {
- "lastChecked": "2026-11-26T18:30:45Z",
- "nextCheck": "2026-11-26T18:47:45Z",
- "overall": "healthy",
+ "lastChecked": "2026-11-26T18:45:49Z",
+ "nextCheck": "2026-11-26T19:02:49Z",
+ "overall": "degraded",
  "platforms": [
   {
-   "overall": "healthy",
-   "note": "No active incident being tracked. Last: Nov 12\u201314 global outage (EX1550543 / MO1550821), resolved.",
+   "overall": "degraded",
+   "note": "We've isolated that a recent service update removed the \"MeetingMessage\" traffic subtype from affected messages, causing a lower recipient limit of 25 to be applied instead of the standard 5000. We're rolling back the problematic update for all potentially affected users and have updated the \"Title\", \"User impact\", and \"Scope of impact\" fields of our communications to reflect this change. We aim to provide a...",
    "source": "Microsoft 365 tab",
-   "lastIncident": "2026-11-14T04:15:00Z",
+   "lastIncident": null,
    "id": "m365",
    "name": "Microsoft 365",
    "statusPage": "https://status.cloud.microsoft",
@@ -42,6 +42,13 @@
    ],
    "advisories": 7,
    "posts": [
+    {
+     "id": "EX1569272",
+     "kind": "incident",
+     "service": "Exchange Online",
+     "title": "Some users may be unable to send calendar invitations in Exchange Online ",
+     "at": "2026-11-26T18:35:37Z"
+    },
     {
      "id": "IT1549049",
      "kind": "advisory",
@@ -95,7 +102,7 @@
    "services": [
     {
      "name": "Exchange Online / Outlook",
-     "status": "healthy"
+     "status": "degraded"
     },
     {
      "name": "Microsoft Teams",
@@ -130,9 +137,15 @@
      "status": "healthy"
     }
    ],
-   "autoOverall": "healthy",
-   "history": [],
-   "since": "2026-11-25T14:51:08Z"
+   "autoOverall": "degraded",
+   "history": [
+    {
+     "at": "2026-11-26T18:45:49Z",
+     "from": "healthy",
+     "to": "degraded"
+    }
+   ],
+   "since": "2026-11-26T18:45:49Z"
   },
   {
    "overall": "healthy",
@@ -297,21 +310,21 @@
      "url": "https://cmedirect.cmegroup.com/",
      "ok": true,
      "code": 403,
-     "ms": 79
+     "ms": 58
     },
     {
      "name": "CME Group Login",
      "url": "https://login.cmegroup.com/",
      "ok": true,
      "code": 200,
-     "ms": 646
+     "ms": 503
     },
     {
      "name": "CME Group website",
      "url": "https://www.cmegroup.com/",
      "ok": true,
      "code": 403,
-     "ms": 74
+     "ms": 51
     }
    ],
    "id": "cme",
@@ -364,14 +377,14 @@
      "url": "https://www.bloomberg.com/professional/",
      "ok": true,
      "code": 403,
-     "ms": 78
+     "ms": 57
     },
     {
      "name": "Bloomberg Anywhere login",
      "url": "https://bba.bloomberg.net/",
      "ok": true,
      "code": 200,
-     "ms": 201
+     "ms": 94
     }
    ],
    "id": "bloomberg",
@@ -423,7 +436,7 @@
      "url": "https://c9tec.com/",
      "ok": true,
      "code": 200,
-     "ms": 148
+     "ms": 74
     }
    ],
    "id": "c9",
@@ -458,8 +471,8 @@
      "name": "KRM22 website",
      "url": "https://www.krm22.com/",
      "ok": true,
-     "code": 200,
-     "ms": 1099
+     "code": 202,
+     "ms": 336
     }
    ],
    "id": "krm22",
@@ -488,27 +501,41 @@
  ],
  "summary": {
   "platformsTotal": 6,
-  "platformsOk": 6,
-  "issues": [],
+  "platformsOk": 5,
+  "issues": [
+   "Microsoft 365"
+  ],
   "checksTotal": 7,
   "checksOk": 7,
-  "avgMs": 332,
+  "avgMs": 167,
   "iceTotal": 13,
   "iceOk": 13,
   "m365Services": 8,
-  "m365Ok": 8,
+  "m365Ok": 7,
   "m365Advisories": 7,
   "maintActive": 0,
   "maintUpcoming": 0,
   "nextMaint": null,
   "lastChange": {
-   "at": "2026-11-26T03:00:48Z",
-   "from": "unknown",
-   "to": "healthy",
-   "platform": "ICE"
+   "at": "2026-11-26T18:45:49Z",
+   "from": "healthy",
+   "to": "degraded",
+   "platform": "Microsoft 365"
   },
-  "lastM365Incident": "2026-11-14T04:15:00Z",
+  "lastM365Incident": null,
   "feed": [
+   {
+    "at": "2026-11-26T18:45:49Z",
+    "platform": "Microsoft 365",
+    "kind": "change",
+    "text": "Status changed: Operational \u2192 Degraded"
+   },
+   {
+    "at": "2026-11-26T18:35:37Z",
+    "platform": "Microsoft 365",
+    "kind": "incident",
+    "text": "EX1569272 \u00b7 Exchange Online: Some users may be unable to send calendar invitations in Exchange Online "
+   },
    {
     "at": "2026-11-26T03:00:48Z",
     "platform": "ICE",
@@ -538,12 +565,6 @@
     "platform": "Microsoft 365",
     "kind": "advisory",
     "text": "TM1567135 \u00b7 Microsoft Teams: Users may not see Public Switched Telephone Network (PSTN) contact names shown on inbound Microsoft Teams call banners"
-   },
-   {
-    "at": "2026-11-14T04:15:00Z",
-    "platform": "Microsoft 365",
-    "kind": "resolved",
-    "text": "Nov 12\u201314 global outage (EX1550543 / MO1550821) resolved."
    },
    {
     "at": "2026-11-03T17:44:54Z",
