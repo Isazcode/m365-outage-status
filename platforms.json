@@ -1,11 +1,11 @@
 {
- "lastChecked": "2026-11-26T20:30:45Z",
- "nextCheck": "2026-11-26T20:47:45Z",
+ "lastChecked": "2026-11-26T20:45:45Z",
+ "nextCheck": "2026-11-26T21:02:45Z",
  "overall": "degraded",
  "platforms": [
   {
    "overall": "degraded",
-   "note": "We've isolated that a recent service update removed the \"MeetingMessage\" traffic subtype from affected messages, causing a lower recipient limit of 25 to be applied instead of the standard 5000. We're rolling back the problematic update for all potentially affected users and have updated the \"Title\", \"User impact\", and \"Scope of impact\" fields of our communications to reflect this change. We aim to provide a...",
+   "note": "After further analysis, we've decided to roll back the update for a limited subset of affected service infrastructure and test with affected users to validate if our actions remediated impact prior to initiating a wider roll back. We aim to provide a timeline for the wider roll back to be initiated as soon as possible.",
    "source": "Microsoft 365 tab",
    "lastIncident": null,
    "id": "m365",
@@ -47,7 +47,7 @@
      "kind": "incident",
      "service": "Exchange Online",
      "title": "Some users may be unable to send calendar invitations in Exchange Online ",
-     "at": "2026-11-26T18:35:37Z"
+     "at": "2026-11-26T20:36:28Z"
     },
     {
      "id": "IT1549049",
@@ -310,21 +310,21 @@
      "url": "https://cmedirect.cmegroup.com/",
      "ok": true,
      "code": 403,
-     "ms": 187
+     "ms": 167
     },
     {
      "name": "CME Group Login",
      "url": "https://login.cmegroup.com/",
      "ok": true,
      "code": 200,
-     "ms": 812
+     "ms": 814
     },
     {
      "name": "CME Group website",
      "url": "https://www.cmegroup.com/",
      "ok": true,
      "code": 403,
-     "ms": 113
+     "ms": 126
     }
    ],
    "id": "cme",
@@ -377,14 +377,14 @@
      "url": "https://www.bloomberg.com/professional/",
      "ok": true,
      "code": 403,
-     "ms": 121
+     "ms": 218
     },
     {
      "name": "Bloomberg Anywhere login",
      "url": "https://bba.bloomberg.net/",
      "ok": true,
      "code": 200,
-     "ms": 172
+     "ms": 373
     }
    ],
    "id": "bloomberg",
@@ -436,7 +436,7 @@
      "url": "https://c9tec.com/",
      "ok": true,
      "code": 200,
-     "ms": 169
+     "ms": 233
     }
    ],
    "id": "c9",
@@ -472,7 +472,7 @@
      "url": "https://www.krm22.com/",
      "ok": true,
      "code": 200,
-     "ms": 1428
+     "ms": 1708
     }
    ],
    "id": "krm22",
@@ -507,7 +507,7 @@
   ],
   "checksTotal": 7,
   "checksOk": 7,
-  "avgMs": 428,
+  "avgMs": 519,
   "iceTotal": 13,
   "iceOk": 13,
   "m365Services": 8,
@@ -525,16 +525,16 @@
   "lastM365Incident": null,
   "feed": [
    {
+    "at": "2026-11-26T20:36:28Z",
+    "platform": "Microsoft 365",
+    "kind": "incident",
+    "text": "EX1569272 \u00b7 Exchange Online: Some users may be unable to send calendar invitations in Exchange Online "
+   },
+   {
     "at": "2026-11-26T18:45:49Z",
     "platform": "Microsoft 365",
     "kind": "change",
     "text": "Status changed: Operational \u2192 Degraded"
-   },
-   {
-    "at": "2026-11-26T18:35:37Z",
-    "platform": "Microsoft 365",
-    "kind": "incident",
-    "text": "EX1569272 \u00b7 Exchange Online: Some users may be unable to send calendar invitations in Exchange Online "
    },
    {
     "at": "2026-11-26T03:00:48Z",
