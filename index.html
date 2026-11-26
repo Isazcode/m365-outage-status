@@ -390,6 +390,16 @@
     const add = (l, v, d, tone) => { const c = el("div","stat" + (tone ? " " + tone + "-s" : "")); c.append(el("div","l",l), el("div","v",v)); if(d) c.append(el("div","d",d)); host.append(c); };
     const n = S.platformsTotal || P.platforms.length, ok = S.platformsOk != null ? S.platformsOk : P.platforms.filter(p=>p.overall==="healthy").length;
     add("Platforms operational", ok + " / " + n, (S.issues||[]).length ? "Issues: " + S.issues.join(", ") : "No active issues", ok === n ? "good" : (S.issues||[]).length ? "bad" : "warn");
+    if(O && (O.offices||[]).length){
+      const seen = O.offices.filter(o => o.state !== "unknown");
+      const up = O.offices.filter(o => o.state === "healthy").length;
+      const bad = O.offices.filter(o => o.state === "degraded" || o.state === "outage");
+      add("Offices online", up + " / " + O.offices.length,
+          bad.length ? bad.map(o => o.name).join(", ")
+                     : (seen.length ? "Every office normal" : "Waiting for first reading"),
+          !seen.length ? "" : bad.some(o => o.state === "outage") ? "bad"
+                        : bad.length ? "warn" : "good");
+    }
     if(S.m365Services) add("Microsoft 365 services", S.m365Ok + " / " + S.m365Services, (S.m365Advisories||0) + " minor advisor" + (S.m365Advisories === 1 ? "y" : "ies") + " open", S.m365Ok === S.m365Services ? "good" : "warn");
     if(S.iceTotal) add("ICE systems normal", S.iceOk + " / " + S.iceTotal, "Per the ICE Status Center", S.iceOk === S.iceTotal ? "good" : "warn");
     if(S.checksTotal) add("Websites responding", S.checksOk + " / " + S.checksTotal, S.avgMs ? "Avg response " + S.avgMs + " ms" : "", S.checksOk === S.checksTotal ? "good" : "warn");
