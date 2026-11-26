@@ -1,11 +1,11 @@
 {
- "lastChecked": "2026-11-26T22:45:47Z",
- "nextCheck": "2026-11-26T23:02:47Z",
+ "lastChecked": "2026-11-26T23:00:47Z",
+ "nextCheck": "2026-11-26T23:17:47Z",
  "overall": "degraded",
  "platforms": [
   {
    "overall": "degraded",
-   "note": "After further analysis, we've decided to roll back the update for a limited subset of affected service infrastructure and test with affected users to validate if our actions remediated impact prior to initiating a wider roll back. We aim to provide a timeline for the wider roll back to be initiated as soon as possible.",
+   "note": "We've completed a rollback of the problematic service update for a limited subset of service infrastructure and validated with affected users that our actions successfully remediated impact. We\u2019re preparing to initiate a wider rollback for all affected users, which we anticipate will begin by our next scheduled update.",
    "source": "Microsoft 365 tab",
    "lastIncident": null,
    "id": "m365",
@@ -47,7 +47,7 @@
      "kind": "incident",
      "service": "Exchange Online",
      "title": "Some users may be unable to send calendar invitations in Exchange Online ",
-     "at": "2026-11-26T20:36:28Z"
+     "at": "2026-11-26T22:42:31Z"
     },
     {
      "id": "IT1549049",
@@ -310,21 +310,21 @@
      "url": "https://cmedirect.cmegroup.com/",
      "ok": true,
      "code": 403,
-     "ms": 153
+     "ms": 78
     },
     {
      "name": "CME Group Login",
      "url": "https://login.cmegroup.com/",
      "ok": true,
      "code": 200,
-     "ms": 679
+     "ms": 874
     },
     {
      "name": "CME Group website",
      "url": "https://www.cmegroup.com/",
      "ok": true,
      "code": 403,
-     "ms": 66
+     "ms": 133
     }
    ],
    "id": "cme",
@@ -377,14 +377,14 @@
      "url": "https://www.bloomberg.com/professional/",
      "ok": true,
      "code": 403,
-     "ms": 100
+     "ms": 143
     },
     {
      "name": "Bloomberg Anywhere login",
      "url": "https://bba.bloomberg.net/",
      "ok": true,
      "code": 200,
-     "ms": 420
+     "ms": 500
     }
    ],
    "id": "bloomberg",
@@ -436,7 +436,7 @@
      "url": "https://c9tec.com/",
      "ok": true,
      "code": 200,
-     "ms": 236
+     "ms": 206
     }
    ],
    "id": "c9",
@@ -472,7 +472,7 @@
      "url": "https://www.krm22.com/",
      "ok": true,
      "code": 200,
-     "ms": 1830
+     "ms": 1745
     }
    ],
    "id": "krm22",
@@ -507,7 +507,7 @@
   ],
   "checksTotal": 7,
   "checksOk": 7,
-  "avgMs": 497,
+  "avgMs": 525,
   "iceTotal": 13,
   "iceOk": 13,
   "m365Services": 8,
@@ -525,7 +525,7 @@
   "lastM365Incident": null,
   "feed": [
    {
-    "at": "2026-11-26T20:36:28Z",
+    "at": "2026-11-26T22:42:31Z",
     "platform": "Microsoft 365",
     "kind": "incident",
     "text": "EX1569272 \u00b7 Exchange Online: Some users may be unable to send calendar invitations in Exchange Online "
