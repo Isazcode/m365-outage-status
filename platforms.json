@@ -1,13 +1,13 @@
 {
- "lastChecked": "2026-11-26T23:45:49Z",
- "nextCheck": "2026-11-27T00:02:49Z",
- "overall": "degraded",
+ "lastChecked": "2026-11-27T00:00:46Z",
+ "nextCheck": "2026-11-27T00:17:46Z",
+ "overall": "healthy",
  "platforms": [
   {
-   "overall": "degraded",
-   "note": "We've completed a rollback of the problematic service update for a limited subset of service infrastructure and validated with affected users that our actions successfully remediated impact. We\u2019re preparing to initiate a wider rollback for all affected users, which we anticipate will begin by our next scheduled update.",
+   "overall": "healthy",
+   "note": "No active incident being tracked. Last: Nov 12\u201314 global outage (EX1550543 / MO1550821), resolved.",
    "source": "Microsoft 365 tab",
-   "lastIncident": null,
+   "lastIncident": "2026-11-26T23:39:05Z",
    "id": "m365",
    "name": "Microsoft 365",
    "statusPage": "https://status.cloud.microsoft",
@@ -42,13 +42,6 @@
    ],
    "advisories": 7,
    "posts": [
-    {
-     "id": "EX1569272",
-     "kind": "incident",
-     "service": "Exchange Online",
-     "title": "Some users may be unable to send calendar invitations in Exchange Online ",
-     "at": "2026-11-26T23:37:59Z"
-    },
     {
      "id": "IT1549049",
      "kind": "advisory",
@@ -102,7 +95,7 @@
    "services": [
     {
      "name": "Exchange Online / Outlook",
-     "status": "degraded"
+     "status": "healthy"
     },
     {
      "name": "Microsoft Teams",
@@ -137,15 +130,20 @@
      "status": "healthy"
     }
    ],
-   "autoOverall": "degraded",
+   "autoOverall": "healthy",
    "history": [
     {
      "at": "2026-11-26T18:45:49Z",
      "from": "healthy",
      "to": "degraded"
+    },
+    {
+     "at": "2026-11-27T00:00:46Z",
+     "from": "degraded",
+     "to": "healthy"
     }
    ],
-   "since": "2026-11-26T18:45:49Z"
+   "since": "2026-11-27T00:00:46Z"
   },
   {
    "overall": "healthy",
@@ -310,21 +308,21 @@
      "url": "https://cmedirect.cmegroup.com/",
      "ok": true,
      "code": 403,
-     "ms": 22
+     "ms": 156
     },
     {
      "name": "CME Group Login",
      "url": "https://login.cmegroup.com/",
      "ok": true,
      "code": 200,
-     "ms": 422
+     "ms": 959
     },
     {
      "name": "CME Group website",
      "url": "https://www.cmegroup.com/",
      "ok": true,
      "code": 403,
-     "ms": 29
+     "ms": 160
     }
    ],
    "id": "cme",
@@ -377,14 +375,14 @@
      "url": "https://www.bloomberg.com/professional/",
      "ok": true,
      "code": 403,
-     "ms": 79
+     "ms": 171
     },
     {
      "name": "Bloomberg Anywhere login",
      "url": "https://bba.bloomberg.net/",
      "ok": true,
      "code": 200,
-     "ms": 81
+     "ms": 331
     }
    ],
    "id": "bloomberg",
@@ -436,7 +434,7 @@
      "url": "https://c9tec.com/",
      "ok": true,
      "code": 200,
-     "ms": 83
+     "ms": 232
     }
    ],
    "id": "c9",
@@ -472,7 +470,7 @@
      "url": "https://www.krm22.com/",
      "ok": true,
      "code": 200,
-     "ms": 1211
+     "ms": 1461
     }
    ],
    "id": "krm22",
@@ -501,34 +499,38 @@
  ],
  "summary": {
   "platformsTotal": 6,
-  "platformsOk": 5,
-  "issues": [
-   "Microsoft 365"
-  ],
+  "platformsOk": 6,
+  "issues": [],
   "checksTotal": 7,
   "checksOk": 7,
-  "avgMs": 275,
+  "avgMs": 495,
   "iceTotal": 13,
   "iceOk": 13,
   "m365Services": 8,
-  "m365Ok": 7,
+  "m365Ok": 8,
   "m365Advisories": 7,
   "maintActive": 0,
   "maintUpcoming": 0,
   "nextMaint": null,
   "lastChange": {
-   "at": "2026-11-26T18:45:49Z",
-   "from": "healthy",
-   "to": "degraded",
+   "at": "2026-11-27T00:00:46Z",
+   "from": "degraded",
+   "to": "healthy",
    "platform": "Microsoft 365"
   },
-  "lastM365Incident": null,
+  "lastM365Incident": "2026-11-26T23:39:05Z",
   "feed": [
    {
-    "at": "2026-11-26T23:37:59Z",
+    "at": "2026-11-27T00:00:46Z",
     "platform": "Microsoft 365",
-    "kind": "incident",
-    "text": "EX1569272 \u00b7 Exchange Online: Some users may be unable to send calendar invitations in Exchange Online "
+    "kind": "change",
+    "text": "Status changed: Degraded \u2192 Operational"
+   },
+   {
+    "at": "2026-11-26T23:39:05Z",
+    "platform": "Microsoft 365",
+    "kind": "resolved",
+    "text": "Nov 12\u201314 global outage (EX1550543 / MO1550821) resolved."
    },
    {
     "at": "2026-11-26T18:45:49Z",
