@@ -1,21 +1,17 @@
 {
- "generated": "2026-11-26T17:39:43Z",
- "overall": "healthy",
+ "generated": "2026-11-27T01:08:07Z",
+ "overall": "unknown",
  "offices": [
   {
    "id": "miami",
    "name": "Miami",
    "city": "Coral Gables, FL",
    "isp": "AT&T",
-   "state": "healthy",
-   "reason": "Normal",
+   "state": "unknown",
+   "reason": "No reading for 73 min",
    "source": "automatic",
-   "since": "2026-11-26T17:39:43Z",
+   "since": "2026-11-27T01:08:07Z",
    "days": [
-    {
-     "d": "2026-08-29",
-     "s": "unknown"
-    },
     {
      "d": "2026-08-30",
      "s": "unknown"
@@ -250,7 +246,7 @@
     },
     {
      "d": "2026-10-27",
-     "s": "healthy"
+     "s": "unknown"
     },
     {
      "d": "2026-10-28",
@@ -371,6 +367,10 @@
     {
      "d": "2026-11-26",
      "s": "healthy"
+    },
+    {
+     "d": "2026-11-27",
+     "s": "unknown"
     }
    ]
   },
@@ -379,15 +379,11 @@
    "name": "Houston",
    "city": "Houston, TX",
    "isp": "AT&T",
-   "state": "healthy",
-   "reason": "Normal",
+   "state": "unknown",
+   "reason": "No reading for 73 min",
    "source": "automatic",
-   "since": "2026-11-26T17:39:43Z",
+   "since": "2026-11-27T01:08:07Z",
    "days": [
-    {
-     "d": "2026-08-29",
-     "s": "unknown"
-    },
     {
      "d": "2026-08-30",
      "s": "unknown"
@@ -622,7 +618,7 @@
     },
     {
      "d": "2026-10-27",
-     "s": "healthy"
+     "s": "unknown"
     },
     {
      "d": "2026-10-28",
@@ -743,6 +739,10 @@
     {
      "d": "2026-11-26",
      "s": "healthy"
+    },
+    {
+     "d": "2026-11-27",
+     "s": "unknown"
     }
    ]
   },
@@ -751,15 +751,11 @@
    "name": "Stamford",
    "city": "Stamford, CT",
    "isp": "Optimum",
-   "state": "healthy",
-   "reason": "Normal",
+   "state": "unknown",
+   "reason": "No reading for 73 min",
    "source": "automatic",
-   "since": "2026-11-26T17:39:43Z",
+   "since": "2026-11-27T01:08:07Z",
    "days": [
-    {
-     "d": "2026-08-29",
-     "s": "unknown"
-    },
     {
      "d": "2026-08-30",
      "s": "unknown"
@@ -994,7 +990,7 @@
     },
     {
      "d": "2026-10-27",
-     "s": "healthy"
+     "s": "unknown"
     },
     {
      "d": "2026-10-28",
@@ -1115,6 +1111,10 @@
     {
      "d": "2026-11-26",
      "s": "healthy"
+    },
+    {
+     "d": "2026-11-27",
+     "s": "unknown"
     }
    ]
   },
@@ -1126,12 +1126,8 @@
    "state": "healthy",
    "reason": "Normal",
    "source": "automatic",
-   "since": "2026-11-26T17:39:43Z",
+   "since": "2026-11-27T01:08:07Z",
    "days": [
-    {
-     "d": "2026-08-29",
-     "s": "unknown"
-    },
     {
      "d": "2026-08-30",
      "s": "unknown"
@@ -1366,7 +1362,7 @@
     },
     {
      "d": "2026-10-27",
-     "s": "healthy"
+     "s": "unknown"
     },
     {
      "d": "2026-10-28",
@@ -1487,6 +1483,10 @@
     {
      "d": "2026-11-26",
      "s": "healthy"
+    },
+    {
+     "d": "2026-11-27",
+     "s": "unknown"
     }
    ]
   },
@@ -1495,15 +1495,11 @@
    "name": "London",
    "city": "London, UK",
    "isp": "Backbone Connect",
-   "state": "healthy",
-   "reason": "Normal",
+   "state": "unknown",
+   "reason": "No reading for 73 min",
    "source": "automatic",
-   "since": "2026-11-26T17:39:43Z",
+   "since": "2026-11-27T01:08:07Z",
    "days": [
-    {
-     "d": "2026-08-29",
-     "s": "unknown"
-    },
     {
      "d": "2026-08-30",
      "s": "unknown"
@@ -1738,7 +1734,7 @@
     },
     {
      "d": "2026-10-27",
-     "s": "healthy"
+     "s": "unknown"
     },
     {
      "d": "2026-10-28",
@@ -1859,6 +1855,10 @@
     {
      "d": "2026-11-26",
      "s": "healthy"
+    },
+    {
+     "d": "2026-11-27",
+     "s": "unknown"
     }
    ]
   }
