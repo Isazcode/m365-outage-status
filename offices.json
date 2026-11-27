@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-27T09:43:34Z",
+ "generated": "2026-11-27T19:12:42Z",
  "overall": "unknown",
  "offices": [
   {
@@ -8,9 +8,9 @@
    "city": "Coral Gables, FL",
    "isp": "AT&T",
    "state": "unknown",
-   "reason": "No reading for 168 min",
+   "reason": "No reading for 77 min",
    "source": "automatic",
-   "since": "2026-11-27T09:43:34Z",
+   "since": "2026-11-27T19:12:42Z",
    "days": [
     {
      "d": "2026-08-30",
@@ -380,9 +380,9 @@
    "city": "Houston, TX",
    "isp": "AT&T",
    "state": "unknown",
-   "reason": "No reading for 108 min",
+   "reason": "No reading for 77 min",
    "source": "automatic",
-   "since": "2026-11-27T09:43:34Z",
+   "since": "2026-11-27T19:12:42Z",
    "days": [
     {
      "d": "2026-08-30",
@@ -752,9 +752,9 @@
    "city": "Stamford, CT",
    "isp": "Optimum",
    "state": "unknown",
-   "reason": "No reading for 48 min",
+   "reason": "No reading for 77 min",
    "source": "automatic",
-   "since": "2026-11-27T09:43:34Z",
+   "since": "2026-11-27T19:12:42Z",
    "days": [
     {
      "d": "2026-08-30",
@@ -1124,9 +1124,9 @@
    "city": "New York, NY",
    "isp": "Essensys",
    "state": "unknown",
-   "reason": "No reading for 108 min",
+   "reason": "No reading for 77 min",
    "source": "automatic",
-   "since": "2026-11-27T09:43:34Z",
+   "since": "2026-11-27T19:12:42Z",
    "days": [
     {
      "d": "2026-08-30",
@@ -1496,9 +1496,9 @@
    "city": "London, UK",
    "isp": "Backbone Connect",
    "state": "unknown",
-   "reason": "No reading for 48 min",
+   "reason": "No reading for 77 min",
    "source": "automatic",
-   "since": "2026-11-27T09:43:34Z",
+   "since": "2026-11-27T19:12:42Z",
    "days": [
     {
      "d": "2026-08-30",
