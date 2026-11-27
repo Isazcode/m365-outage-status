@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-27T01:08:07Z",
+ "generated": "2026-11-27T09:43:34Z",
  "overall": "unknown",
  "offices": [
   {
@@ -8,9 +8,9 @@
    "city": "Coral Gables, FL",
    "isp": "AT&T",
    "state": "unknown",
-   "reason": "No reading for 73 min",
+   "reason": "No reading for 168 min",
    "source": "automatic",
-   "since": "2026-11-27T01:08:07Z",
+   "since": "2026-11-27T09:43:34Z",
    "days": [
     {
      "d": "2026-08-30",
@@ -370,7 +370,7 @@
     },
     {
      "d": "2026-11-27",
-     "s": "unknown"
+     "s": "healthy"
     }
    ]
   },
@@ -380,9 +380,9 @@
    "city": "Houston, TX",
    "isp": "AT&T",
    "state": "unknown",
-   "reason": "No reading for 73 min",
+   "reason": "No reading for 108 min",
    "source": "automatic",
-   "since": "2026-11-27T01:08:07Z",
+   "since": "2026-11-27T09:43:34Z",
    "days": [
     {
      "d": "2026-08-30",
@@ -742,7 +742,7 @@
     },
     {
      "d": "2026-11-27",
-     "s": "unknown"
+     "s": "healthy"
     }
    ]
   },
@@ -752,9 +752,9 @@
    "city": "Stamford, CT",
    "isp": "Optimum",
    "state": "unknown",
-   "reason": "No reading for 73 min",
+   "reason": "No reading for 48 min",
    "source": "automatic",
-   "since": "2026-11-27T01:08:07Z",
+   "since": "2026-11-27T09:43:34Z",
    "days": [
     {
      "d": "2026-08-30",
@@ -1110,11 +1110,11 @@
     },
     {
      "d": "2026-11-26",
-     "s": "healthy"
+     "s": "degraded"
     },
     {
      "d": "2026-11-27",
-     "s": "unknown"
+     "s": "degraded"
     }
    ]
   },
@@ -1123,10 +1123,10 @@
    "name": "New York",
    "city": "New York, NY",
    "isp": "Essensys",
-   "state": "healthy",
-   "reason": "Normal",
+   "state": "unknown",
+   "reason": "No reading for 108 min",
    "source": "automatic",
-   "since": "2026-11-27T01:08:07Z",
+   "since": "2026-11-27T09:43:34Z",
    "days": [
     {
      "d": "2026-08-30",
@@ -1486,7 +1486,7 @@
     },
     {
      "d": "2026-11-27",
-     "s": "unknown"
+     "s": "healthy"
     }
    ]
   },
@@ -1496,9 +1496,9 @@
    "city": "London, UK",
    "isp": "Backbone Connect",
    "state": "unknown",
-   "reason": "No reading for 73 min",
+   "reason": "No reading for 48 min",
    "source": "automatic",
-   "since": "2026-11-27T01:08:07Z",
+   "since": "2026-11-27T09:43:34Z",
    "days": [
     {
      "d": "2026-08-30",
@@ -1858,7 +1858,7 @@
     },
     {
      "d": "2026-11-27",
-     "s": "unknown"
+     "s": "healthy"
     }
    ]
   }
