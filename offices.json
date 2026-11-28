@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-28T02:01:39Z",
+ "generated": "2026-11-28T10:12:13Z",
  "overall": "unknown",
  "offices": [
   {
@@ -8,9 +8,9 @@
    "city": "Coral Gables, FL",
    "isp": "AT&T",
    "state": "unknown",
-   "reason": "No reading for 66 min",
+   "reason": "No reading for 77 min",
    "source": "automatic",
-   "since": "2026-11-28T02:01:39Z",
+   "since": "2026-11-28T10:12:13Z",
    "days": [
     {
      "d": "2026-08-31",
@@ -370,7 +370,7 @@
     },
     {
      "d": "2026-11-28",
-     "s": "unknown"
+     "s": "healthy"
     }
    ]
   },
@@ -379,10 +379,10 @@
    "name": "Houston",
    "city": "Houston, TX",
    "isp": "AT&T",
-   "state": "healthy",
-   "reason": "Normal",
+   "state": "unknown",
+   "reason": "No reading for 77 min",
    "source": "automatic",
-   "since": "2026-11-28T02:01:39Z",
+   "since": "2026-11-28T10:12:13Z",
    "days": [
     {
      "d": "2026-08-31",
@@ -742,7 +742,7 @@
     },
     {
      "d": "2026-11-28",
-     "s": "unknown"
+     "s": "healthy"
     }
    ]
   },
@@ -752,9 +752,9 @@
    "city": "Stamford, CT",
    "isp": "Optimum",
    "state": "unknown",
-   "reason": "No reading for 66 min",
+   "reason": "No reading for 77 min",
    "source": "automatic",
-   "since": "2026-11-28T02:01:39Z",
+   "since": "2026-11-28T10:12:13Z",
    "days": [
     {
      "d": "2026-08-31",
@@ -1114,7 +1114,7 @@
     },
     {
      "d": "2026-11-28",
-     "s": "unknown"
+     "s": "healthy"
     }
    ]
   },
@@ -1124,9 +1124,9 @@
    "city": "New York, NY",
    "isp": "Essensys",
    "state": "unknown",
-   "reason": "No reading for 66 min",
+   "reason": "No reading for 77 min",
    "source": "automatic",
-   "since": "2026-11-28T02:01:39Z",
+   "since": "2026-11-28T10:12:13Z",
    "days": [
     {
      "d": "2026-08-31",
@@ -1486,7 +1486,7 @@
     },
     {
      "d": "2026-11-28",
-     "s": "unknown"
+     "s": "healthy"
     }
    ]
   },
@@ -1496,9 +1496,9 @@
    "city": "London, UK",
    "isp": "Backbone Connect",
    "state": "unknown",
-   "reason": "No reading for 66 min",
+   "reason": "No reading for 77 min",
    "source": "automatic",
-   "since": "2026-11-28T02:01:39Z",
+   "since": "2026-11-28T10:12:13Z",
    "days": [
     {
      "d": "2026-08-31",
@@ -1858,7 +1858,7 @@
     },
     {
      "d": "2026-11-28",
-     "s": "unknown"
+     "s": "healthy"
     }
    ]
   }
