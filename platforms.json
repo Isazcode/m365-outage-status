@@ -1,7 +1,7 @@
 {
- "lastChecked": "2026-11-28T07:00:45Z",
- "nextCheck": "2026-11-28T07:17:45Z",
- "overall": "unknown",
+ "lastChecked": "2026-11-28T07:15:44Z",
+ "nextCheck": "2026-11-28T07:32:44Z",
+ "overall": "healthy",
  "platforms": [
   {
    "overall": "healthy",
@@ -146,10 +146,111 @@
    "since": "2026-11-27T00:00:46Z"
   },
   {
-   "overall": "unknown",
-   "note": "Couldn't read the ICE Status Center feed (HTTPError).",
-   "source": "ICE Status Center (unreachable)",
-   "components": [],
+   "overall": "healthy",
+   "note": "All tracked ICE systems normal per the ICE Status Center.",
+   "source": "ICE Status Center (automatic)",
+   "components": [
+    {
+     "name": "WebICE (energy futures & OTC)",
+     "note": "WebICE is the trading screen for these ICE markets; ICE doesn't list WebICE on its own.",
+     "status": "healthy",
+     "items": [
+      {
+       "name": "ICE Futures US",
+       "label": "Normal",
+       "status": "healthy"
+      },
+      {
+       "name": "ICE Futures Europe",
+       "label": "Normal",
+       "status": "healthy"
+      },
+      {
+       "name": "ICE Endex",
+       "label": "Normal",
+       "status": "healthy"
+      },
+      {
+       "name": "ICE OTC",
+       "label": "Normal",
+       "status": "healthy"
+      },
+      {
+       "name": "ICE NGX",
+       "label": "Normal",
+       "status": "healthy"
+      }
+     ]
+    },
+    {
+     "name": "ICE Chat",
+     "note": "",
+     "status": "healthy",
+     "items": [
+      {
+       "name": "ICE Chat",
+       "label": "Normal",
+       "status": "healthy"
+      }
+     ]
+    },
+    {
+     "name": "ICE Connect",
+     "note": "ICE doesn't list ICE Connect by name; tracked through its Data & Analytics desktop and ICE Launcher entries.",
+     "status": "healthy",
+     "items": [
+      {
+       "name": "Data and Analytics",
+       "label": "Normal",
+       "status": "healthy"
+      },
+      {
+       "name": "ICE Launcher",
+       "label": "Normal",
+       "status": "healthy"
+      }
+     ]
+    },
+    {
+     "name": "Clearing (ICE Clear US / Europe)",
+     "note": "",
+     "status": "healthy",
+     "items": [
+      {
+       "name": "ICE Clear US",
+       "label": "Normal",
+       "status": "healthy"
+      },
+      {
+       "name": "ICE Clear Europe",
+       "label": "Normal",
+       "status": "healthy"
+      },
+      {
+       "name": "ICE NGX",
+       "label": "Normal",
+       "status": "healthy"
+      }
+     ]
+    },
+    {
+     "name": "Confirmations (ICE Link / eConfirm)",
+     "note": "",
+     "status": "healthy",
+     "items": [
+      {
+       "name": "ICE Link",
+       "label": "Normal",
+       "status": "healthy"
+      },
+      {
+       "name": "eConfirm",
+       "label": "Normal",
+       "status": "healthy"
+      }
+     ]
+    }
+   ],
    "maintenance": [],
    "id": "ice",
    "name": "ICE",
@@ -182,7 +283,7 @@
      "https://downdetector.com/search/?q=intercontinental%20exchange"
     ]
    ],
-   "autoOverall": "unknown",
+   "autoOverall": "healthy",
    "history": [
     {
      "at": "2026-11-26T02:45:44Z",
@@ -208,9 +309,14 @@
      "at": "2026-11-28T07:00:45Z",
      "from": "healthy",
      "to": "unknown"
+    },
+    {
+     "at": "2026-11-28T07:15:44Z",
+     "from": "unknown",
+     "to": "healthy"
     }
    ],
-   "since": "2026-11-28T07:00:45Z"
+   "since": "2026-11-28T07:15:44Z"
   },
   {
    "overall": "healthy",
@@ -222,21 +328,21 @@
      "url": "https://cmedirect.cmegroup.com/",
      "ok": true,
      "code": 403,
-     "ms": 159
+     "ms": 154
     },
     {
      "name": "CME Group Login",
      "url": "https://login.cmegroup.com/",
      "ok": true,
      "code": 200,
-     "ms": 737
+     "ms": 534
     },
     {
      "name": "CME Group website",
      "url": "https://www.cmegroup.com/",
      "ok": true,
      "code": 403,
-     "ms": 48
+     "ms": 67
     }
    ],
    "id": "cme",
@@ -289,14 +395,14 @@
      "url": "https://www.bloomberg.com/professional/",
      "ok": true,
      "code": 403,
-     "ms": 61
+     "ms": 62
     },
     {
      "name": "Bloomberg Anywhere login",
      "url": "https://bba.bloomberg.net/",
      "ok": true,
      "code": 200,
-     "ms": 110
+     "ms": 174
     }
    ],
    "id": "bloomberg",
@@ -348,7 +454,7 @@
      "url": "https://c9tec.com/",
      "ok": true,
      "code": 200,
-     "ms": 167
+     "ms": 152
     }
    ],
    "id": "c9",
@@ -384,7 +490,7 @@
      "url": "https://www.krm22.com/",
      "ok": true,
      "code": 200,
-     "ms": 2207
+     "ms": 1400
     }
    ],
    "id": "krm22",
@@ -413,13 +519,13 @@
  ],
  "summary": {
   "platformsTotal": 6,
-  "platformsOk": 5,
+  "platformsOk": 6,
   "issues": [],
   "checksTotal": 7,
   "checksOk": 7,
-  "avgMs": 498,
-  "iceTotal": 0,
-  "iceOk": 0,
+  "avgMs": 363,
+  "iceTotal": 13,
+  "iceOk": 13,
   "m365Services": 8,
   "m365Ok": 8,
   "m365Advisories": 7,
@@ -427,13 +533,19 @@
   "maintUpcoming": 0,
   "nextMaint": null,
   "lastChange": {
-   "at": "2026-11-28T07:00:45Z",
-   "from": "healthy",
-   "to": "unknown",
+   "at": "2026-11-28T07:15:44Z",
+   "from": "unknown",
+   "to": "healthy",
    "platform": "ICE"
   },
   "lastM365Incident": "2026-11-26T23:39:05Z",
   "feed": [
+   {
+    "at": "2026-11-28T07:15:44Z",
+    "platform": "ICE",
+    "kind": "change",
+    "text": "Status changed: Unknown \u2192 Operational"
+   },
    {
     "at": "2026-11-28T07:00:45Z",
     "platform": "ICE",
@@ -517,12 +629,6 @@
     "platform": "Microsoft 365",
     "kind": "advisory",
     "text": "MO1507859 \u00b7 Microsoft 365 suite: Some users may be missing the \"Meeting options\" button for Microsoft Teams meetings in multiple Microsoft 365 apps"
-   },
-   {
-    "at": "2026-08-06T11:38:26Z",
-    "platform": "Microsoft 365",
-    "kind": "advisory",
-    "text": "MO1447619 \u00b7 Microsoft 365 suite: Users may have been unable to sign into the OneNote Web Clipper"
    }
   ]
  }
